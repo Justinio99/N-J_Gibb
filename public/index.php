@@ -10,7 +10,7 @@
  */
 
   // fix schf: approot für url
-  $GLOBALS['appurl'] = '/m151/kontakte_bbcmvc/public';
+  $GLOBALS['appurl'] = '/N-J_Gibb/index.php';
   $GLOBALS['numAppurlFragments'] = 3;
 
   require_once '../lib/Dispatcher.php';
