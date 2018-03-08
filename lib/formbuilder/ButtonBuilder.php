@@ -5,10 +5,8 @@
    * Start- und End-Tags separat erstellt.
    * Es sind sowohl Buttons möglich als auch Links, die wie Buttons aussehen.
    */
-  class ButtonBuilder extends Builder
-  {
-    public function __construct()
-    {
+  class ButtonBuilder extends Builder{
+    public function __construct(){
       $this->addProperty('label');
       $this->addProperty('name');
       $this->addProperty('type');
@@ -21,8 +19,7 @@
       $result .= "<div class='$eltClass'>\n";
 	  return $result;
 	}
-    public function build()
-    {
+    public function build(){
 	  if ($this->type == "link") {
         $result = "<a name='{$this->name}' href='".$GLOBALS['appurl']."{$this->link}' class='btn {$this->class}'>{$this->label}</a>";
 	  } else {
