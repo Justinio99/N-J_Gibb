@@ -1,23 +1,23 @@
 <?php
-  class Form
-  {
+
+class Form
+{
     public function __construct($action = '#', $method = 'POST')
     {
-      echo "<form class='form-horizontal' action='".$action."' method='".$method."'>\n";
-      echo "<div class='component' data-html='true'>\n";
+        echo "<form class=\"form-horizontal\" action=\"$action\" method=\"$method\">";
+        echo '  <div class="component" data-html="true">';
     }
 
     public function end()
     {
-      $result  = "</div>\n";
-      $result .= "</form>\n";
-	  return $result;
+        echo '  </div>';
+        echo '</form>';
     }
 
     public function __call($name, $args)
     {
-      $builderName = ucfirst($name).'Builder';
-      return new $builderName();
+        $builderName = ucfirst($name).'Builder';
+
+        return new $builderName();
     }
-  }
-?>
+}

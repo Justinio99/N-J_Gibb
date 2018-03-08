@@ -18,19 +18,19 @@ Willkommen beim MVC des Bbc. In diesem Repository findest du den Code sowie eine
 
 ### Vorbereitung
 
-Bevor du mit der Installation beginnen kannst, ist es wichtig, dass du auf deinem PC einen funktionierenden XAMPP Stack am laufen hast. Sollte das nicht der Fall sein, findest du im Internet eine Anleitung dazu.
+Bevor du mit der Installation beginnen kannst, ist es wichtig, dass du auf deinem PC einen funktionierenden XAMPP Stack am laufen hast. Sollte das nicht der Fall sein, findest du auf dem Share oder im Internet eine Anleitung dazu.
 
-### Installation
+## Installation (Windows)
 
-Kopiere zuert alle Dateien aus der Branch, welche du verwenden möchtest, in den Ordner in dem du Dein Projekt entwickeln möchtest. Hier wird das Verzeichnis `C:\dev\my-project` verwendet.
+Kopiere zuert alle Dateien aus der Branch, welche du verwenden möchtest, in den Ordner in dem du Dein Projekt entwickelst.
 
-Um später mit einem DNS Namen auf die Seite zugreifen zu können, musst du den gewünschten DNS Namen in der `hosts`-Datei eintagen. Wir verwenden in diesem Beispiel den Namen `my-project.local`.
+Um später mit einem DNS Namen auf die Seite zugreifen zu können, musst du den gewünschten DNS Namen in der hosts-Datei eintagen.
 
 `C:\Windows\System32\drivers\etc\hosts`
 ```
 # [...]
 
-127.0.0.1    my-project.local
+127.0.0.1    mvc.local
 ```
 
 Damit der Apache Webserver aus dem XAMPP Stack weiss, welcher DNS Namen zu welchem Ordner auf dem Dateisystem gehört, musst du einen VirtualHost erstellen. Dazu musst du die Datei `C:\xampp\apache\conf\extra\httpd-vhosts.conf` folgendermassen anpassen.
@@ -46,13 +46,19 @@ NameVirtualHost *:80
 # Eigentliche VHost Konfiguration
 <VirtualHost 127.0.0.1>
     # DNS Name auf den der VHost hören soll
-    ServerName my-project.local
+    ServerName www.mvc.local
+    # Weitere DNS Namen
+    ServerAlias mvc.local
+
+    AddType text/html .shtml
+    AddHandler server-parsed .shtml
+    ServerAdmin webmaster@mvc.local
 
     # Ort an dem Das Projekt zu finden ist
-    DocumentRoot "c:/dev/my-project/public"
+    DocumentRoot "d:/dev/web/mvc"
 
     # Nochmals
-    <Directory "c:/dev/my-project/public">
+    <Directory "d:/dev/web/mvc">
         Options Indexes FollowSymLinks
         Options +Includes
         AllowOverride All
@@ -64,4 +70,4 @@ NameVirtualHost *:80
 </VirtualHost>
 ```
 
-Nun starte den Apache über das XAMPP Control Panel neu und du solltest mit dem Browser deines Vertrauens auf die Seite `http://my-project.local` zugreifen können.
+Nun starte den Apache über das XAMPP Control Panel neu und du solltest mit dem Browser deines Vertrauens auf die Seite zugreifen können.
