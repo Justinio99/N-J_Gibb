@@ -29,19 +29,22 @@ require_once '../repository/LoginRepository.php';
       $view->display();
     }
 }
+
+public function login(){
+  if (!empty($user)){
+    $view = new View('index_login');
+    $view->title = 'Login';
+    $view->user = $_SESSION['logged_in_user'];
+    $view->heading = 'Login';
+    $view->display();
+  }
+  else{
+    $view = new View('index_login');
+    $view->title = 'Login';
+    //$view->user = $_SESSION['logged_in_user'];
+    $view->heading = 'Login';
+    $view->display();
+  }
+}
 ?>
 
-  if (!empty($user)){
-        $view = new View('index_login');
-        $view->title = 'Login';
-        $view->user = $_SESSION['logged_in_user'];
-        $view->heading = 'Login';
-        $view->display();
-      }
-      else{
-        $view = new View('index_login');
-        $view->title = 'Login';
-        //$view->user = $_SESSION['logged_in_user'];
-        $view->heading = 'Login';
-        $view->display();
-      }
