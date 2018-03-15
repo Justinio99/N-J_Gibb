@@ -21,14 +21,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-		  <!-- fix schf -->
-          <a class="navbar-brand" href="<?=$GLOBALS['appurl']?>/">Kontakteverwaltung</a>
+          <a class="navbar-brand">Bilder-DB</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
 			<!-- fix schf -->
-            <li><a href="<?=$GLOBALS['appurl']?>/kontakt">Kontaktliste</a></li>
-            <li><a href="<?=$GLOBALS['appurl']?>/kontakt/create">Kontakt erfassen</a></li>
+            <li><a href="<?=$GLOBALS['appurl']?>/login">Login</a></li>
+            <li><a href="<?=$GLOBALS['appurl']?>/login/registration">Registration</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

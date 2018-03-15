@@ -36,8 +36,8 @@
       //   "default_index" rendern. Wie das genau funktioniert, ist in der
       //   View Klasse beschrieben.
       $view = new View('default_index');
-      $view->title = 'Kontakteverwaltung';
-      $view->heading = 'Kontakteverwaltung';
+      $view->title = 'Bilderdatenbank';
+      $view->heading = 'Bilderdatenbank';
       $view->display();
     }
   }

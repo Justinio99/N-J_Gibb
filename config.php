@@ -22,7 +22,7 @@
       'host' => 'localhost',
       'username' => 'root',
       'password' => 'gibbiX12345',
-      'database' => 'kontakte',
+      'database' => 'bilderdb',
     ),
   );
 ?>

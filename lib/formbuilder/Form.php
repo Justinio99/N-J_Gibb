@@ -1,8 +1,7 @@
 <?php
   class Form
   {
-    public function __construct($action = '#', $method = 'POST')
-    {
+    public function __construct($action = '#', $method = 'POST'){
       echo "<form class='form-horizontal' action='".$action."' method='".$method."'>\n";
       echo "<div class='component' data-html='true'>\n";
     }

@@ -10,8 +10,8 @@
  */
 
   // fix schf: approot für url
-  $GLOBALS['appurl'] = '/m151/kontakte_bbcmvc/public';
-  $GLOBALS['numAppurlFragments'] = 3;
+  $GLOBALS['appurl'] = '/N-J_Gibb/public';
+  $GLOBALS['numAppurlFragments'] = 2;
 
   require_once '../lib/Dispatcher.php';
   require_once '../lib/formbuilder/FormBuilder.php';
