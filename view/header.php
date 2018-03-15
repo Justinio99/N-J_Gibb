@@ -12,7 +12,7 @@
     <title><?= $title ?></title>
   </head>
   <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav  class="navbar fixed-top navbar-light bg-light nav-container" style="background-color:white;" >
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -34,3 +34,14 @@
     </nav>
     <div class="container">
     <h3><?= $heading ?></h3>
+
+<style>
+
+.nav-container{
+  background-color: white;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+</style>

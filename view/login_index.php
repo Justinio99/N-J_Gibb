@@ -5,7 +5,7 @@
    */
   $lblClass = "col-md-2";
   $eltClass = "col-md-4";
-  $btnClass = "btn btn-success";
+  $btnClass = "btn btn-light";
   $form = new Form($GLOBALS['appurl']."/login");
   $button = new ButtonBuilder();
   echo $form->input()->label('E-Mail')->name('email')->type('text')->lblClass($lblClass)->eltClass($eltClass);
