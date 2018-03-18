@@ -5,10 +5,14 @@ require_once '../repository/LoginRepository.php';
  */
   class LoginController
   {
+
+    $UserRepository = new LoginRepository();
     /**
      * Default-Seite für das Login: Zeigt das Login-Formular an
 	 * Dispatcher: /login
      */
+
+     
     public function index()
     {
       $loginRepository = new LoginRepository();
@@ -30,21 +34,21 @@ require_once '../repository/LoginRepository.php';
     }
 }
 
-public function login(){
-  if (!empty($user)){
-    $view = new View('index_login');
-    $view->title = 'Login';
-    $view->user = $_SESSION['logged_in_user'];
-    $view->heading = 'Login';
-    $view->display();
-  }
-  else{
-    $view = new View('index_login');
-    $view->title = 'Login';
-    //$view->user = $_SESSION['logged_in_user'];
-    $view->heading = 'Login';
-    $view->display();
-  }
-}
+// public function login(){
+//   if (!empty($user)){
+//     $view = new View('index_login');
+//     $view->title = 'Login';
+//     $view->user = $_SESSION['logged_in_user'];
+//     $view->heading = 'Login';
+//     $view->display();
+//   }
+//   else{
+//     $view = new View('index_login');
+//     $view->title = 'Login';
+//     //$view->user = $_SESSION['logged_in_user'];
+//     $view->heading = 'Login';
+//     $view->display();
+//   }
+// }
 ?>
 
