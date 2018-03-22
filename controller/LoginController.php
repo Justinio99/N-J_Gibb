@@ -1,12 +1,12 @@
 <?php
+require_once '../repository/UserRepository.php';
 require_once '../repository/LoginRepository.php';
 /**
  * Controller für das Login und die Registration, siehe Dokumentation im DefaultController.
  */
   class LoginController
   {
-
-    $UserRepository = new LoginRepository();
+   
     /**
      * Default-Seite für das Login: Zeigt das Login-Formular an
 	 * Dispatcher: /login
@@ -32,23 +32,20 @@ require_once '../repository/LoginRepository.php';
       $view->heading = 'Registration';
       $view->display();
     }
+
+    public function login(){
+      if($_POST['send']){
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $error = false;
+        $errors = [];
+        $userRepository = new UserRepository();
+        echo $userRepository->validateEmail($email);
+      }
+      
+      }
 }
 
-// public function login(){
-//   if (!empty($user)){
-//     $view = new View('index_login');
-//     $view->title = 'Login';
-//     $view->user = $_SESSION['logged_in_user'];
-//     $view->heading = 'Login';
-//     $view->display();
-//   }
-//   else{
-//     $view = new View('index_login');
-//     $view->title = 'Login';
-//     //$view->user = $_SESSION['logged_in_user'];
-//     $view->heading = 'Login';
-//     $view->display();
-//   }
-// }
+
 ?>
 
