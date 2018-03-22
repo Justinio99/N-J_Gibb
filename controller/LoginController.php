@@ -41,7 +41,16 @@ require_once '../repository/LoginRepository.php';
         $errors = [];
         $userRepository = new UserRepository();
         echo $userRepository->validateEmail($email);
-      }
+        if($userRepository->validateEmail($email));
+        echo "yes";
+        $user = $userRepository->getUser($email);
+        if(password_verify($password),$user->passwort){
+          $_SESSION['uid'] =$user->uid;
+          header(string: 'Location: '.$GLOBALS['appurl']. //ToDO Verllinkung zur UserHome ansicht
+        }else $error = true;
+        
+
+      }else $error = true;
       
       }
 }
