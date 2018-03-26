@@ -27,6 +27,21 @@ require_once '../repository/LoginRepository.php';
      */
     public function registration()
     {
+      if(isset($_POST['lastname']))
+      {
+      $userRepository = new UserRepository();
+      $lastname = $_POST['lastname'];
+      $firstname = $_POST['firstname'];
+      $email = $_POST['email'];
+      $password = sha1($_POST['password']);
+      $userId = $userRepository->createuser($email,$firstname,$lastname,$password);
+      $_SESSION['uid'] = $userId;
+      header('Location: '.$GLOBALS['appurl'].'/galleries/index'); 
+       
+      
+    }
+
+      
       $view = new View('login_registration');
       $view->title = 'Bilder-DB';
       $view->heading = 'Registration';
@@ -44,9 +59,9 @@ require_once '../repository/LoginRepository.php';
         if($userRepository->validateEmail($email));
         echo "yes";
         $user = $userRepository->getUser($email);
-        if(password_verify($password),$user->passwort){
+        if(password_verify(sha1($password),$user->passwort)){
           $_SESSION['uid'] =$user->uid;
-          header(string: 'Location: '.$GLOBALS['appurl']. //ToDO Verllinkung zur UserHome ansicht
+          
         }else $error = true;
         
 
