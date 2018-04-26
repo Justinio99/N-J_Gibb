@@ -9,6 +9,8 @@
     <!-- Custom styles for this template -->
     <link href="<?=$GLOBALS['appurl']?>/css/style.css" rel="stylesheet">
 	<script src="<?=$GLOBALS['appurl']?>/js/jscript.js"></script>
+  
+  <script src="public/js/bootstrap.min.js"></script>
     <title><?= $title ?></title>
   </head>
   <body>
@@ -28,6 +30,13 @@
 			<!-- fix schf -->
             <li><a href="<?=$GLOBALS['appurl']?>/login">Login</a></li>
             <li><a href="<?=$GLOBALS['appurl']?>/login/registration">Registration</a></li>
+
+            <?php
+              if(isset($_SESSION['uid'])){
+                echo "<li><a href='".$GLOBALS['appurl']."/login/logout'>Logout</a></li>";              }
+
+            ?>
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
