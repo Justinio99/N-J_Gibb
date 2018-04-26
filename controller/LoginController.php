@@ -33,10 +33,10 @@ require_once '../repository/LoginRepository.php';
       $lastname = $_POST['lastname'];
       $firstname = $_POST['firstname'];
       $email = $_POST['email'];
-      $password = sha1($_POST['password']);
-      $userId = $userRepository->createuser($email,$firstname,$lastname,$password);
-      $_SESSION['uid'] = $userId;
-      header('Location: '.$GLOBALS['appurl'].'/galleries/index'); 
+      $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
+      
+      $userRepository->createuser($email,$firstname,$lastname,$password);
+      header('Location: '.$GLOBALS['appurl'].'/login'); 
        
       
     }
@@ -51,23 +51,34 @@ require_once '../repository/LoginRepository.php';
     public function login(){
       if($_POST['send']){
         $email = $_POST['email'];
-        $password = $_POST['password'];
+        $passwordInput = $_POST['password'];
         $error = false;
         $errors = [];
         $userRepository = new UserRepository();
         echo $userRepository->validateEmail($email);
         if($userRepository->validateEmail($email));
-        echo "yes";
         $user = $userRepository->getUser($email);
-        if(password_verify(sha1($password),$user->passwort)){
+        $name = $user->firstname." ".$user->lastname;
+        $passwordDB = $user->passwort;
+        if(password_verify($passwordInput,$passwordDB)){
           $_SESSION['uid'] =$user->uid;
-          
-        }else $error = true;
-        
+          $_SESSION['userName'] = $name;
+          header('Location: '.$GLOBALS['appurl'].'/galleries/index');
 
+        }else{
+          $error = true;
+          header('Location: '.$GLOBALS['appurl'].'/login'); 
+        }
+       
       }else $error = true;
-      
+       
       }
+
+      public function logout(){
+          session_destroy();
+          header('Location: '.$GLOBALS['appurl'].'/login'); 
+        }
+        
 }
 
 
