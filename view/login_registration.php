@@ -14,8 +14,11 @@
   echo $form->input()->label('Vorname')->name('firstname')->type('text')->lblClass($lblClass)->eltClass($eltClass);
   echo $form->input()->label('E-Mail')->name('email')->type('email')->lblClass($lblClass)->eltClass($eltClass);
   echo $form->input()->label('Passwort')->name('password')->type('password')->lblClass($lblClass)->eltClass($eltClass);
+  echo $form->input()->label('Passwort')->name('pwRepeat')->type('password')->lblClass($lblClass)->eltClass($eltClass);
   echo $button->start($lblClass, $eltClass);
   echo $button->label('Regristiren')->name('registration')->type('submit')->class('btn btn-light');
   echo $button->end();
   echo $form->end();
 ?>
+
+

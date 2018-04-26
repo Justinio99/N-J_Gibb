@@ -34,9 +34,19 @@ require_once '../repository/LoginRepository.php';
       $firstname = $_POST['firstname'];
       $email = $_POST['email'];
       $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
+      $passwordRepeat = $_POST["pwRepeat"];
+      $user = $userRepository->getUser($email);
+
+      if($_POST['password'] == $passwordRepeat && $user->email !== $_POST['email']){
+
+        $userRepository->createuser($email,$firstname,$lastname,$password);
+        header('Location: '.$GLOBALS['appurl'].'/login');   
+      }else{
+        
+      echo "<h2>Email oder Password falsch</h2>";
+    }
       
-      $userRepository->createuser($email,$firstname,$lastname,$password);
-      header('Location: '.$GLOBALS['appurl'].'/login'); 
+     
        
       
     }
@@ -60,6 +70,7 @@ require_once '../repository/LoginRepository.php';
         $user = $userRepository->getUser($email);
         $name = $user->firstname." ".$user->lastname;
         $passwordDB = $user->passwort;
+        
         if(password_verify($passwordInput,$passwordDB)){
           $_SESSION['uid'] =$user->uid;
           $_SESSION['userName'] = $name;
