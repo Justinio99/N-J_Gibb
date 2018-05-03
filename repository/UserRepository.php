@@ -18,7 +18,7 @@ class UserRepository extends Repository
 
 
     }
-    public function validateEmail(){
+    public function validateEmail($email){
         $mailValid = false;
         $query = "SELECT * FROM benutzer WHERE email = ?";
         $statement = ConnectionHandler::getConnection()->prepare($query);
