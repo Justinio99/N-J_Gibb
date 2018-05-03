@@ -9,10 +9,12 @@
     <!-- Custom styles for this template -->
     <link href="<?=$GLOBALS['appurl']?>/css/style.css" rel="stylesheet">
 	<script src="<?=$GLOBALS['appurl']?>/js/jscript.js"></script>
+  
+  <script src="public/js/bootstrap.min.js"></script>
     <title><?= $title ?></title>
   </head>
   <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav  class="navbar fixed-top navbar-light bg-light nav-container" style="background-color:white;" >
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -26,11 +28,32 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
 			<!-- fix schf -->
-            <li><a href="<?=$GLOBALS['appurl']?>/login">Login</a></li>
             <li><a href="<?=$GLOBALS['appurl']?>/login/registration">Registration</a></li>
+
+            <?php
+              if(isset($_SESSION['uid'])){
+                echo "<li><a href='".$GLOBALS['appurl']."/login/logout'>Logout</a></li>";   
+              }
+              if(!isset($_SESSION['uid'])){
+                echo "<li><a href='".$GLOBALS['appurl']."/login'>Login</a></li>";   
+              }
+                
+            ?>
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
     <div class="container">
     <h3><?= $heading ?></h3>
+
+<style>
+
+.nav-container{
+  background-color: white;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+</style>
