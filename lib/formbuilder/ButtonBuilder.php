@@ -17,6 +17,7 @@
       $result  = "<div class='form-group'>\n";
       $result .= "<label class='$lblClass' control-label' for='textinput'>&nbsp;</label>\n";
       $result .= "<div class='$eltClass'>\n";
+     
 	  return $result;
 	}
     public function build(){

@@ -43,7 +43,7 @@ require_once '../repository/LoginRepository.php';
         header('Location: '.$GLOBALS['appurl'].'/login');   
       }else{
         
-      echo "<h2>Email oder Password falsch</h2>";
+      echo "<h2 id='test'>Email oder Password falsch</h2>";
     }
       
      
