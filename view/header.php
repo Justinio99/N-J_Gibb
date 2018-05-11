@@ -9,41 +9,28 @@
     <!-- Custom styles for this template -->
     <link href="<?=$GLOBALS['appurl']?>/css/style.css" rel="stylesheet">
 	<script src="<?=$GLOBALS['appurl']?>/js/jscript.js"></script>
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="public/js/bootstrap.min.js"></script>
     <title><?= $title ?></title>
   </head>
   <body>
-    <nav  class="navbar fixed-top navbar-light bg-light nav-container" style="background-color:white;" >
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand">Bilder-DB</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-			<!-- fix schf -->
-            <li><a href="<?=$GLOBALS['appurl']?>/login/registration">Registration</a></li>
-
-            <?php
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Bilder DB</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="<?=$GLOBALS['appurl']?>/login/registration">Registration</a></li>
+      <?php
               if(isset($_SESSION['uid'])){
                 echo "<li><a href='".$GLOBALS['appurl']."/login/logout'>Logout</a></li>";   
               }
               if(!isset($_SESSION['uid'])){
                 echo "<li><a href='".$GLOBALS['appurl']."/login'>Login</a></li>";   
               }
-                
-            ?>
-
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+              ?>
+      </ul>
+    </div>
+  </nav>
     <div class="container">
     <h3><?= $heading ?></h3>
 

@@ -54,7 +54,18 @@ require_once '../repository/LoginRepository.php';
 
         $userRepository->createuser($email,$firstname,$lastname,$password);
         header('Location: '.$GLOBALS['appurl'].'/login');   
+<<<<<<< HEAD
       }
+=======
+      }else{
+        
+      echo "<h2 id='test'>Email oder Password falsch</h2>";
+    }
+      
+     
+       
+      
+>>>>>>> nici-dev
     }
      $view = new View('login_registration');
       $view->title = 'Bilder-DB';
