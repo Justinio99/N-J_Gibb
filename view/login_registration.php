@@ -19,6 +19,7 @@
   echo $button->label('Regristiren')->name('registration')->type('submit')->class('btn btn-light');
   echo $button->end();
   echo $form->end();
+    
 ?>
 
 

@@ -29,6 +29,7 @@ require_once '../repository/LoginRepository.php';
     {
       if(isset($_POST['lastname']))
       {
+        $errorsRegister = [];
       $userRepository = new UserRepository();
       $lastname = $_POST['lastname'];
       $firstname = $_POST['firstname'];
@@ -36,34 +37,41 @@ require_once '../repository/LoginRepository.php';
       $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
       $passwordRepeat = $_POST["pwRepeat"];
       $user = $userRepository->getUser($email);
-
+         
+      if($_POST['password'] != $passwordRepeat){
+        array_push($errorsRegister,'Passwort stimmt nicht überein');
+        $this->displayRegisterErorrs($errorsRegister);
+      }
+      if($email == ''){
+        array_push($errorsRegister,'Bitte Email eingeben');
+        $this->displayRegisterErorrs($errorsRegister);
+      }
+      if($user->email == $_POST['email'] && $email != ''){
+        array_push($errorsRegister,'Email ist bereits vergeben');
+        $this->displayRegisterErorrs($errorsRegister);
+      }
       if($_POST['password'] == $passwordRepeat && $user->email !== $_POST['email']){
 
         $userRepository->createuser($email,$firstname,$lastname,$password);
         header('Location: '.$GLOBALS['appurl'].'/login');   
-      }else{
-        
-      echo "<h2>Email oder Password falsch</h2>";
+      }
     }
-      
-     
-       
-      
-    }
-
-      
-      $view = new View('login_registration');
+     $view = new View('login_registration');
       $view->title = 'Bilder-DB';
       $view->heading = 'Registration';
       $view->display();
     }
+    public function displayRegisterErorrs($errorsRegister) {
+      $_SESSION['registerErrors'] = $errorsRegister;
+
+   }
+
 
     public function login(){
       if($_POST['send']){
         $email = $_POST['email'];
         $passwordInput = $_POST['password'];
-        $error = false;
-        $errors = [];
+        $errorsLogin = [];
         $userRepository = new UserRepository();
         echo $userRepository->validateEmail($email);
         if($userRepository->validateEmail($email));
@@ -77,12 +85,16 @@ require_once '../repository/LoginRepository.php';
           header('Location: '.$GLOBALS['appurl'].'/galleries/index');
 
         }else{
-          $error = true;
-          header('Location: '.$GLOBALS['appurl'].'/login'); 
+          array_push($errorsLogin,"Das Passwort wurde falsch eingegeben");
+          $this->displayLoginErorrs($errorsLogin, "/login");
         }
        
-      }else $error = true;
-       
+      }
+    }
+
+      public function displayLoginErorrs($errorsLogin, $location) {
+         $_SESSION['loginErrors'] = $errorsLogin;
+         header('Location: '.$GLOBALS['appurl'].$location); 
       }
 
       public function logout(){
@@ -92,6 +104,6 @@ require_once '../repository/LoginRepository.php';
         
 }
 
-
+  
 ?>
 

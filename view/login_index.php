@@ -4,6 +4,7 @@
    * Login-Formular
    * Das Formular wird mithilfe des Formulargenerators erstellt.
    */
+
   $lblClass = "col-md-2";
   $eltClass = "col-md-4";
   $btnClass = "btn btn-light";
@@ -16,4 +17,12 @@
   echo $button->end();
   echo $form->end();
 
+  if(isset($_SESSION['loginErrors'])){
+    foreach ($_SESSION['loginErrors'] as $value){
+      echo "<div>".$value."</div>";
+    }
+  }
+  
 ?>
+
+
