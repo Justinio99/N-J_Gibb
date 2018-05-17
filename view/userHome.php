@@ -1,10 +1,9 @@
 
 <?php 
+if(!isset($_SESSION['uid'])){
+    header('Location: '.$GLOBALS['appurl'].'/login');
+}else{
 echo "<p>Willkommen ".$_SESSION['userName']."</p>";
-// echo "<pre>"; 
-// print_r($galleries[0]->name);
-// echo "</pre>";
-
 echo "<div style='display:flex; flex-wrap: wrap;'>";
 for($i=0; $i < count($galleries); $i++){
 
@@ -15,7 +14,7 @@ for($i=0; $i < count($galleries); $i++){
 echo "</div>";
 
 
-
+}
 ?>
 
 
