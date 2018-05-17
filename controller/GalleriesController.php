@@ -1,9 +1,9 @@
 <?php 
 
 require_once '../repository/GallerieRepository.php';
-require_once '--/repository/UserRepository.php'
+require_once '../repository/UserRepository.php';
 
-class galleriesController{
+class GalleriesController{
 
   
     public function index()
