@@ -7,18 +7,18 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="<?=$GLOBALS['appurl']?>/css/bootstrap.min.css">
     <!-- Custom styles for this template -->
-    <link href="<?=$GLOBALS['appurl']?>/css/style.css" rel="stylesheet">
 	<script src="<?=$GLOBALS['appurl']?>/js/jscript.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="<?=$GLOBALS['appurl']?>/css/style.css" rel="stylesheet">
   <script src="public/js/bootstrap.min.js"></script>
   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
   <script src="<?=$GLOBALS['appurl']?>/js/app.js"></script>
     <title><?= $title ?></title>
   </head>
   <body>
-  <nav>
-    <div class="nav-wrapper">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
       <a href="#" class="brand-logo">Bilder DB</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><a href="<?=$GLOBALS['appurl']?>/login/registration">Registration</a></li>
