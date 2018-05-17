@@ -1,16 +1,16 @@
-    <?php 
+<?php 
 require_once '../repository/UserRepository.php';
 require_once '../repository/LoginRepository.php';
 
 
-class GalleriesController{
+class adminController{
 
     public function index()
     {
       $loginRepository = new LoginRepository();
-      $view = new View('userHome');
-      $view->title = 'User Home';
-      $view->heading = 'User Home';
+      $view = new View('admin');
+      $view->title = 'Admin';
+      $view->heading = 'Admin';
       $view->display();
     }
 

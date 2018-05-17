@@ -16,7 +16,6 @@
   echo $button->label('Login')->name('send')->type('submit')->class('btn waves-effect waves-light');
   echo $button->end();
   echo $form->end();
-<<<<<<< HEAD
 
   if(isset($_SESSION['loginErrors'])){
     foreach ($_SESSION['loginErrors'] as $value){
@@ -24,8 +23,6 @@
     }
   }
   
-=======
->>>>>>> nici-dev
 ?>
 
 

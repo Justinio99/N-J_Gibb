@@ -5,12 +5,15 @@ echo "<p>Willkommen ".$_SESSION['userName']."</p>";
 
 ?>
 
-<div class="row">
-  <div class="col-4">
-    <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="logout" role="tab" aria-controls="home">Home</a>
-      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-      <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-      <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
-    </div>
-  </div>
+<button id="addGallerie">Gallerie Hinzufügen</button>
+<form action="/N-J_Gibb/public/galleries/createGallerie" method="post" class="gallerieForm hidden">
+<label>Name Gallerie</label>
+<input type="text" name="gallerieName"><br>
+<label>Beschreibung</label>
+<input type="text" name="beschreiubng">
+<button id="submitGallerie" type="submit">Erstellen</button>
+</form>
+
+<?php
+
+?>

@@ -41,10 +41,9 @@ class UserRepository extends Repository
         $row = $result->fetch_object();
         $result->close();
         return $row;
-        
-
-
     }
+
+   
 }
 
 ?>

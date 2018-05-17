@@ -54,9 +54,6 @@ require_once '../repository/LoginRepository.php';
 
         $userRepository->createuser($email,$firstname,$lastname,$password);
         header('Location: '.$GLOBALS['appurl'].'/login');   
-<<<<<<< HEAD
-      }
-=======
       }else{
         
       echo "<h2 id='test'>Email oder Password falsch</h2>";
@@ -65,7 +62,6 @@ require_once '../repository/LoginRepository.php';
      
        
       
->>>>>>> nici-dev
     }
      $view = new View('login_registration');
       $view->title = 'Bilder-DB';
@@ -91,9 +87,16 @@ require_once '../repository/LoginRepository.php';
         $passwordDB = $user->passwort;
         
         if(password_verify($passwordInput,$passwordDB)){
+         if($user->role == 1){  
+          header('Location: '.$GLOBALS['appurl'].'/admin/index');
           $_SESSION['uid'] =$user->uid;
-          $_SESSION['userName'] = $name;
-          header('Location: '.$GLOBALS['appurl'].'/galleries/index');
+            $_SESSION['userName'] = $name;
+          }
+          else{
+            $_SESSION['uid'] =$user->uid;
+            $_SESSION['userName'] = $name;
+            header('Location: '.$GLOBALS['appurl'].'/galleries/index');
+          }
 
         }else{
           array_push($errorsLogin,"Das Passwort wurde falsch eingegeben");

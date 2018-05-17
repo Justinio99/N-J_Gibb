@@ -26,3 +26,19 @@ CREATE TABLE userPicture(upid int PRIMARY KEY AUTO_INCREMENT,
                          uid int,
                          pid int,
                          tid int );
+
+
+CREATE TABLE benutzer(uid int PRIMARY KEY AUTO_INCREMENT,
+                        email varchar(50),
+                        firstname varchar(30),
+                        lastname varchar(30),
+                        passwort char(60),
+                        role int(4)
+                        );
+
+CREATE TABLE gallerie(gid int PRIMARY KEY AUTO_INCREMENT,
+                        uid int,
+                        pid int,
+                        name varchar(30),
+                        beschreibung varchar(100)
+                        );

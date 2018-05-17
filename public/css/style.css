@@ -45,3 +45,7 @@ a.brand-logo{
 .footer{
   color: white;
 }
+
+.hidden{
+  display: none;
+}
