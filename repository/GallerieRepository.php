@@ -22,10 +22,14 @@ $statement = ConnectionHandler::getConnection()->prepare($query);
 $statement->bind_param('s',$uid);
 $statement->execute();
 $result = $statement->get_result();
+$rows = array();
+while($row =$result->fetch_object()){
+  $rows[] = $row;
+}
 if(!$result) throw new Exception($statement->error);
 $row = $result->fetch_object();
 $result->close();
-return $row;
+return $rows;
 }
    
 }

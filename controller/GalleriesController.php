@@ -11,23 +11,22 @@ class GalleriesController{
       $view = new View('userHome');
       $view->title = 'User Home';
       $view->heading = 'User Home';
-      $view->display();
       $uid = $_SESSION['uid'];
       $gallerieRepo = new GallerieRepository();
-      $galleries = $gallerieRepo->getGalleries($uid);
-        var_dump($galleries);
+      $view->galleries = $gallerieRepo->getGalleries($uid);
+      $view->display();
+     
       
     }
-    public function createGallerie()
+    public function addGallerie()
     {
         $userId = $_SESSION['uid'];
         var_dump($_SESSION['uid']);
         $name = $_POST['gallerieName'];
         $beschrieb = $_POST['beschreiubng'];
         $userRepository = new UserRepository();
-        if($name != ''){
-            $userRepository->createGallerie($userId,$name,$beschrieb);
-        }
+        $userRepository->createGallerie($userId,$name,$beschrieb);
+        
         
 
     }
