@@ -21,11 +21,10 @@ class GalleriesController{
     public function addGallerie()
     {
         $userId = $_SESSION['uid'];
-        var_dump($_SESSION['uid']);
         $name = $_POST['gallerieName'];
         $beschrieb = $_POST['beschreiubng'];
-        $userRepository = new UserRepository();
-        $userRepository->createGallerie($userId,$name,$beschrieb);
+        $gallerieRepo = new GallerieRepository();
+        $gallerieRepo->createGallerie($userId,$name,$beschrieb);
         
         
 

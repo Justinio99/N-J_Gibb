@@ -19,7 +19,7 @@ echo "</div>";
 
 
 <a id="addGallerie" class="waves-effect waves-light btn-small"><i id="addGallerie" class="material-icons right">add</i>Gallerie Hinzufügen</a>
-<form action="/N-J_Gibb/public/galleries/createGallerie" method="post" class="gallerieForm hidden">
+<form action="/N-J_Gibb/public/galleries/addGallerie" method="post" class="gallerieForm hidden">
 <label>Name Gallerie</label>
 <input type="text" name="gallerieName"><br>
 <label>Beschreibung</label>
