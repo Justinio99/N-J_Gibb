@@ -24,7 +24,13 @@ class GalleriesController{
         $name = $_POST['gallerieName'];
         $beschrieb = $_POST['beschreiubng'];
         $gallerieRepo = new GallerieRepository();
-        $gallerieRepo->createGallerie($userId,$name,$beschrieb);
+        if($name != ''){
+            $gallerieRepo->createGallerie($userId,$name,$beschrieb);
+            header('Location: '.$GLOBALS['appurl'].'/galleries/index');
+        }else{
+        header('Location: '.$GLOBALS['appurl'].'/galleries/index');
+        }
+        
         
         
 

@@ -1,5 +1,8 @@
 
-<?php 
+<?php
+
+$gallerierepo = new GallerieRepository();
+
 if(!isset($_SESSION['uid'])){
     header('Location: '.$GLOBALS['appurl'].'/login');
 }else{
@@ -7,12 +10,27 @@ echo "<p>Willkommen ".$_SESSION['userName']."</p>";
 echo "<div style='display:flex; flex-wrap: wrap;'>";
 for($i=0; $i < count($galleries); $i++){
 
-    echo "<div class='card'>"."<div  class='container'>"."<p class='name-gallerie'><b>".$galleries[$i]->name."</b></h4> "."<p class='beschreibung-gallerie'>".$galleries[$i]->beschreibung."</p>"."</div>"."</div>";
+
+
+    echo "<div class='card'>".
+    "<i class='material-icons dp48 hideDelete'>delete</i>".
+    "<div  class='container'>".
+    "<p class='name-gallerie'><b>".$galleries[$i]->name."</b></h4> ".
+    "<p class='beschreibung-gallerie'>".$galleries[$i]->beschreibung."</p>".
+    "<form action>".
+    "<button type='submit'></button>".
+    "</form>".
+    "</div>".
+    "</div>";
     
 }
 
 echo "</div>";
 
+function redirect($uid){
+    var_dump($uid);
+    header('Location: '.$GLOBALS['appurl'].'/picture/$uid');  
+}
 
 }
 ?>

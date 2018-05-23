@@ -6,4 +6,10 @@ $(document).ready(function () {
     $("#submitGallerie").click(function () {
         $("#submitGalleriev").addClass("hidden");
     });
+
+    //On hover show hideDelete
+    $('.card').hover(function () {
+        $('.hideDelete').toggleClass('hideDelete');
+    });
+
 });
