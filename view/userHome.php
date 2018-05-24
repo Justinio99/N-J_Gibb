@@ -14,6 +14,7 @@ for($i=0; $i < count($galleries); $i++){
 
     echo "<div class='card'>".
     "<i class='material-icons dp48 hideDelete'>delete</i>".
+    "<i class='material-icons dp50'>edit</i>".
     "<div  class='container'>".
     "<p class='name-gallerie'><b>".$galleries[$i]->name."</b></h4> ".
     "<p class='beschreibung-gallerie'>".$galleries[$i]->beschreibung."</p>".

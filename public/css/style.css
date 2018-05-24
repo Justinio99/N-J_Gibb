@@ -109,3 +109,9 @@ input {
   color: white;
   text-decoration-color: white;
 }
+
+i.material-icons.dp50 {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
