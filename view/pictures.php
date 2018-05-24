@@ -9,9 +9,10 @@ Select image to upload:
 
 
 <?php 
+$baseUrl ="/N-J_Gibb";
 for($i=0; $i< count($pictures);$i++){
     echo "<div>";
-    echo "<img src="."/N-J_Gibb".$pictures[$i]->picture;">";
+    echo "<img src=".$baseUrl.$pictures[$i]->picture.">";
     echo "</div>";
 }
 ?>
