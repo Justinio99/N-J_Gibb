@@ -33,12 +33,7 @@ class GalleriesController{
 
     }
     
-    public function pictures(){
-        $view = new View('pictures');
-        $view->title = 'User Pictures';
-        $view->heading = 'User Pictures';
-        $view->display();
-    }
+
 
 }
 

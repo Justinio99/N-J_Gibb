@@ -4,6 +4,7 @@ CREATE DATABASE IF NOT EXISTS `bilderdb` DEFAULT CHARACTER SET utf8 COLLATE utf8
 
 -- Picture
 CREATE TABLE picture(pid int PRIMARY KEY AUTO_INCREMENT,
+                     gid int,
                      picture Blob,
                      title varchar(50),
                      beschreibung varchar(200));
