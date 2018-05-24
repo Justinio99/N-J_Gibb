@@ -8,7 +8,6 @@ class PictureController{
 
     public function pictures(){
       if(!isset($_SESSION['gid'])){
-
         $_SESSION['gid'] = $_GET['gid'];
       }
         $view = new View('pictures');
@@ -24,7 +23,7 @@ class PictureController{
         $_SESSION['registerErrors'] = [];
         $errorsPicture=[];
             if($_POST['submit']){
-                if(!isset($_FILES['upload']['name'])){
+                if(!empty($_FILES['upload']['name'])){
                     $gid = $_SESSION['gid'];
                     $file_name = $_FILES['upload']['name'];
                     $file_type = $_FILES['upload']['type'];
@@ -40,7 +39,7 @@ class PictureController{
                       echo true;
                     }
                 }else{
-                    array_push($errorsPicture, "Bild upload fehler");
+                    array_push($errorsPicture, "Kein Bild ausgewählt");
                     $_SESSION['registerErrors'] = $errorsPicture;
                     header('Location: '.$GLOBALS['appurl'].'/picture/pictures');
                 }
