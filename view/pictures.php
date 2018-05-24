@@ -1,5 +1,5 @@
 <?php
-$_SESSION['gid'] = $_GET['gid'];
+
 ?> 
 
 <form action='/N-J_Gibb/public/picture/upload' method="post" enctype="multipart/form-data">

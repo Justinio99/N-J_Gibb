@@ -7,7 +7,10 @@ require_once '../repository/PictureRepository.php';
 class PictureController{
 
     public function pictures(){
-        
+      if(!isset($_SESSION['gid'])){
+
+        $_SESSION['gid'] = $_GET['gid'];
+      }
         $view = new View('pictures');
         $view->title = 'User Pictures';
         $view->heading = 'User Pictures';
