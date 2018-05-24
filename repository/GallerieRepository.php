@@ -40,6 +40,13 @@ public function deleteGallerie($uid){
 
 }
 
+public function updateGallerie($gid) {
+$query = " UPDATE FROM gallerie WHERE gid = ??";
+$statement = ConnectionHandler::getConnection()->prepare($query);
+$statement->bind_param('ss', $gid);
+$statement->execute();
+
+}
    
 }
 
