@@ -8,10 +8,11 @@ Select image to upload:
 </form>
 
 
-<div></div>
 <?php 
 for($i=0; $i< count($pictures);$i++){
-    echo "<img src="."/N-J_Gibb/Pictures/".$pictures[$i]->picture;">";
+    echo "<div>";
+    echo "<img src="."/N-J_Gibb".$pictures[$i]->picture;">";
+    echo "</div>";
 }
 ?>
 

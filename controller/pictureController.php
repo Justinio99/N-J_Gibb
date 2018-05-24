@@ -40,7 +40,8 @@ class PictureController{
                
                     if(move_uploaded_file($file_name_tmp,$target_dir.$newFileName)){
                       $pictureRepo = new PictureRepository();
-                      $fullNamePicture = $target_dir.$newFileName;
+                      $fullNamePicture = "/"."Pictures/".$newFileName;
+                      echo $fullNamePicture;
                       $pictureRepo->uploadPicture($gid, $fullNamePicture,$title,$beschreibung);
                     }
                 }else{
