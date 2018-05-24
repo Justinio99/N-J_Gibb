@@ -17,12 +17,13 @@ for($i=0; $i < count($galleries); $i++){
     "<div  class='container'>".
     "<p class='name-gallerie'><b>".$galleries[$i]->name."</b></h4> ".
     "<p class='beschreibung-gallerie'>".$galleries[$i]->beschreibung."</p>".
-    "<form action>".
-    "<button type='submit'></button>".
-    "</form>".
+    "<a href='/N-J_Gibb/public/galleries/pictures'>nici</a>".
     "</div>".
     "</div>";
     
+
+    
+    // `<a href='/N-J_Gibb/public/galleries/pictures?='`.$galleries[$i]->gid.`>nici</a>`.
 }
 
 echo "</div>";

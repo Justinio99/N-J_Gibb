@@ -30,10 +30,14 @@ class GalleriesController{
         }else{
         header('Location: '.$GLOBALS['appurl'].'/galleries/index');
         }
-        
-        
-        
 
+    }
+    
+    public function pictures(){
+        $view = new View('pictures');
+        $view->title = 'User Pictures';
+        $view->heading = 'User Pictures';
+        $view->display();
     }
 
 }

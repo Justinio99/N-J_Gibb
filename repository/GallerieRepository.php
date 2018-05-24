@@ -39,6 +39,7 @@ public function deleteGallerie($uid){
   $statement->execute();
 
 }
+
    
 }
 
