@@ -19,6 +19,7 @@ CREATE TABLE role(rid int PRIMARY KEY AUTO_INCREMENT,
 --tag
 
 CREATE TABLE tags(tid int PRIMARY KEY AUTO_INCREMENT,
+                 pid int,
                  tag varchar(20));
 
 --userPicture

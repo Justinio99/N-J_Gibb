@@ -3,8 +3,11 @@
 Select image to upload:
 <input type="file" name="upload" id="fileToUpload">
 <input placeholder="Name" type="text" name="titel" />
+<input type="text" id="testInput" value=""/>
+
+
 <input placeholder="beschreibung" type="text" name="beschreibung" />
-<input type="submit" value="Upload Image" name="submit">
+<!-- <input type="submit" value="Upload Image" name="submit"> -->
 </form>
 
 

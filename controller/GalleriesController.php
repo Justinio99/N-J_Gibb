@@ -40,9 +40,12 @@ class GalleriesController{
         $view->display();
     }
 
-    // public function deleteGallerie(){
-    //     $gid = $_GET["gid"] 
-    // }
+    public function deleteGallerie(){
+        $gid = $_GET['gid'];
+        $gallerieRepo = new GallerieRepository();
+        $gallerieRepo->deleteGallerie($gid);
+        header('Location: '.$GLOBALS['appurl'].'/galleries/index');
+    }
 
 }
 

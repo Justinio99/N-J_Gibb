@@ -1,6 +1,5 @@
 <?php 
 require_once '../repository/UserRepository.php';
-require_once '../repository/GallerieRepository.php';
 require_once '../repository/PictureRepository.php';
 
 

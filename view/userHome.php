@@ -13,7 +13,9 @@ for($i=0; $i < count($galleries); $i++){
 
 
     echo "<div class='card' >".
+    "<a href=/N-J_Gibb/public/galleries/deleteGallerie?gid=".$galleries[$i]->gid.">".
     "<i class='material-icons dp48 hideDelete'>delete</i>".
+    "</a>".
     "<div  class='container'>".
     "<p class='name-gallerie'><b>".$galleries[$i]->name."</b></h4> ".
     "<p class='beschreibung-gallerie'>".$galleries[$i]->beschreibung."</p>".

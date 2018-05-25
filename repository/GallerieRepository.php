@@ -32,10 +32,10 @@ $result->close();
 return $rows;
 }
 
-public function deleteGallerie($uid){
-  $query = "DELETE FROM gallerie WHERE uid = ?";
+public function deleteGallerie($gid){
+  $query = "DELETE FROM gallerie WHERE gid = ?";
   $statement = ConnectionHandler::getConnection()->prepare($query);
-  $statement->bind_param('i',$uid);
+  $statement->bind_param('i',$gid);
   $statement->execute();
 
 }
@@ -47,6 +47,8 @@ $statement->bind_param('ss', $gid);
 $statement->execute();
 
 }
+
+
    
 }
 

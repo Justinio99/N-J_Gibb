@@ -9,7 +9,9 @@ $(document).ready(function () {
 
     //On hover show hideDelete
     $('.card').hover(function () {
+
         $('.hideDelete').toggleClass('hideDelete');
     });
-
 });
+
+
