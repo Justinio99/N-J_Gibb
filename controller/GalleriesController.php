@@ -46,6 +46,13 @@ class GalleriesController{
         $gallerieRepo->deleteGallerie($gid);
         header('Location: '.$GLOBALS['appurl'].'/galleries/index');
     }
+    public function adminDeleteGallerie(){
+        $gid = $_GET['gid'];
+        $gallerieRepo = new GallerieRepository();
+        $gallerieRepo->deleteGallerie($gid);
+        header('Location: '.$GLOBALS['appurl'].'/admin/index');
+    }
+   
 
 }
 

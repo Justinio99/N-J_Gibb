@@ -4,6 +4,7 @@ require_once '../lib/ConnectionHandler.php';
 
 
 
+
 class UserRepository extends Repository
 {
 
@@ -41,6 +42,25 @@ class UserRepository extends Repository
         $row = $result->fetch_object();
         $result->close();
         return $row;
+    }
+    public function getAllUsers(){
+        $query = "SELECT * FROM benutzer";
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->execute();
+        $result = $statement->get_result();
+        
+        $rows = array();
+        while($row =$result->fetch_object()){
+          $rows[] = $row;
+        }
+        if(!$result) throw new Exception($statement->error);
+        $row = $result->fetch_object();
+        $result->close();
+        return $rows;
+    }
+
+    public function adminDeleteUser(){
+        // $uid = $_GET['uid'];
     }
 
    
