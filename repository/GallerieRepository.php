@@ -64,6 +64,13 @@ $result->close();
 return $rows;
 }
 
+public function adminDeleteGallerie($uid){
+  $query = "DELETE FROM gallerie WHERE uid = ?";
+  $statement = ConnectionHandler::getConnection()->prepare($query);
+  $statement->bind_param('i',$uid);
+  $statement->execute();
+
+}
 
 
    

@@ -43,6 +43,20 @@ class UserRepository extends Repository
         $result->close();
         return $row;
     }
+    
+    public function getUserById($uid){
+        $query = "SELECT * FROM benutzer WHERE uid = ?";
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('i',$uid);
+        $statement->execute();
+        $result = $statement->get_result();
+        if(!$result) throw new Exception($statement->error);
+        $row = $result->fetch_object();
+        $result->close();
+        return $row;
+    }
+
+
     public function getAllUsers(){
         $query = "SELECT * FROM benutzer";
         $statement = ConnectionHandler::getConnection()->prepare($query);
@@ -59,8 +73,12 @@ class UserRepository extends Repository
         return $rows;
     }
 
-    public function adminDeleteUser(){
-        // $uid = $_GET['uid'];
+     public function adminDeleteUser($uid)
+    {
+        $query = "DELETE FROM benutzer WHERE uid = ?";
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('i',$uid);
+        $statement->execute();
     }
 
    

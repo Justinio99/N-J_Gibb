@@ -6,7 +6,7 @@
 for($x = 0; $x < count($users);$x++){
   if($users[$x]->role != 1){
     echo "<div class='card' >".
-    "<a href=/N-J_Gibb/public/galleries/adminDeleteUser?uid=".$users[$x]->uid.">".
+    "<a href=/N-J_Gibb/public/admin/deleteAllUserData?uid=".$users[$x]->uid.">".
     "<i class='material-icons dp48 '>delete</i>".
     "</a>".
     "<div  class='container'>".

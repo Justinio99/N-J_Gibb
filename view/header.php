@@ -34,6 +34,7 @@
                 echo "<li><a href='".$GLOBALS['appurl']."/login'>Login</a></li>";   
               }
               ?>
+             <li><a href="<?=$GLOBALS['appurl']?>/editProfil/index">Profil</a></li>
       </ul>
     </div>
   </nav>
