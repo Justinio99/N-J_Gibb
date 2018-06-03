@@ -121,3 +121,16 @@ img{
   height:200px;
   float: left;
 }
+
+/* resetPassword */
+.password-container{
+  padding: 20px;
+  width: 300px;
+  color:black;
+  height: 300px;
+  background-color: white;
+ margin: 0 auto;
+}
+.pwInput{
+  color: black;
+}

@@ -19,6 +19,23 @@ class UserRepository extends Repository
 
 
     }
+
+        public function updateUserProfil($uid,$email,$firstname,$lastname){
+            $query = "UPDATE  benutzer SET email=$email,firstname=$firstname,lastname=$lastname WHERE uid=$uid";
+            $statement = ConnectionHandler::getConnection()->prepare($query);
+            if(!$statement->execute()) throw new Exception($statement->error);
+                return $statement->insert_id;
+            
+        }
+
+
+    public function changePassword($uid,$password){
+        $query =" UPDATE benutzer set passwort=? WHERE uid=?";
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('is',$uid, $password);
+        $statement->execute();
+    }
+
     public function validateEmail($email){
         $mailValid = false;
         $query = "SELECT * FROM benutzer WHERE email = ?";
