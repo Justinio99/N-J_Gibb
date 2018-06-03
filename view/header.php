@@ -15,15 +15,14 @@
   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="public/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <script src="<?=$GLOBALS['appurl']?>/js/app.js"></script>
   <script src="<?=$GLOBALS['appurl']?>/js/jscript.js"></script>
     <title><?= $title ?></title>
   </head>
   <body>
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+  <nav class="nav-wrapper">
       <a href="#" class="brand-logo">Bilder DB</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><a href="<?=$GLOBALS['appurl']?>/login/registration">Registration</a></li>
       <?php
@@ -35,8 +34,16 @@
               }
               ?>
       </ul>
-    </div>
   </nav>
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="sass.html">Sass</a></li>
+    <li><a href="badges.html">Components</a></li>
+    <li><a href="collapsible.html">Javascript</a></li>
+    <li><a href="mobile.html">Mobile</a></li>
+  </ul>
+  <script> $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });</script>
     <div class="container">
     <h3><?= $heading ?></h3>
 
