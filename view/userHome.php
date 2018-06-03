@@ -16,11 +16,13 @@ for($i=0; $i < count($galleries); $i++){
     "<a href=/N-J_Gibb/public/galleries/deleteGallerie?gid=".$galleries[$i]->gid.">".
     "<i class='material-icons dp48 hideDelete'>delete</i>".
     "</a>".
+    "<a style='text-decoration: none !important;' href='/N-J_Gibb/public/picture/pictures?gid=".$galleries[$i]->gid."'>".
     "<div  class='container'>".
     "<p class='name-gallerie'><b>".$galleries[$i]->name."</b></h4> ".
     "<p class='beschreibung-gallerie'>".$galleries[$i]->beschreibung."</p>".
-    "<a href='/N-J_Gibb/public/picture/pictures?gid=".$galleries[$i]->gid."'>nici</a>".
+    
     "</div>".
+    "</a>".
     "</div>";
      
 }

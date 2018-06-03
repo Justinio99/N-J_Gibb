@@ -12,6 +12,11 @@ $(document).ready(function () {
 
         $('.hideDelete').toggleClass('hideDelete');
     });
+
+    //Admin: 
+    $('.searchButton').click(function () {
+        $('.user-container').addClass('.hidden')
+    });
 });
 
 

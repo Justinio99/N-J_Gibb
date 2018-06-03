@@ -20,6 +20,7 @@ class PictureController{
      }
     public function upload(){
         $gid = $_GET['gid'];
+        $uid = $_SESSION['uid'];
         $_SESSION['registerErrors'] = [];
         $errorsPicture=[];
             if($_POST['submit']){
@@ -41,7 +42,7 @@ class PictureController{
                       $pictureRepo = new PictureRepository();
                       $fullNamePicture = "/"."Pictures/".$newFileName;
                       echo $fullNamePicture;
-                      $pictureRepo->uploadPicture($gid, $fullNamePicture,$title,$beschreibung);
+                      $pictureRepo->uploadPicture($uid,$gid, $fullNamePicture,$title,$beschreibung);
                     }
                 }else{
                     array_push($errorsPicture, "Kein Bild ausgewählt");
@@ -54,6 +55,8 @@ class PictureController{
      
 
     }
+
+    
 
 }
     ?>

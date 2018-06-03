@@ -47,6 +47,9 @@ class GalleriesController{
         header('Location: '.$GLOBALS['appurl'].'/galleries/index');
     }
 
+   
+   
+
 }
 
 ?>

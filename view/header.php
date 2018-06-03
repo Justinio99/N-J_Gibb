@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap core CSS -->
+    
     <link rel="stylesheet" href="<?=$GLOBALS['appurl']?>/css/bootstrap.min.css">
     <!-- Custom styles for this template -->
-	
+	  <link href="<?=$GLOBALS['appurl']?>/css/style.css" rel="stylesheet">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="<?=$GLOBALS['appurl']?>/css/style.css" rel="stylesheet">
-  
+
   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="public/js/bootstrap.min.js"></script>
@@ -33,6 +34,7 @@
                 echo "<li><a href='".$GLOBALS['appurl']."/login'>Login</a></li>";   
               }
               ?>
+             <li><a href="<?=$GLOBALS['appurl']?>/editProfil/index">Profil</a></li>
       </ul>
   </nav>
   <ul class="sidenav" id="mobile-demo">

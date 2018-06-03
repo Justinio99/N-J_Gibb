@@ -48,6 +48,30 @@ $statement->execute();
 
 }
 
+public function getAllGalleries(){
+  $query = "SELECT * FROM gallerie";
+$statement = ConnectionHandler::getConnection()->prepare($query);
+$statement->execute();
+$result = $statement->get_result();
+
+$rows = array();
+while($row =$result->fetch_object()){
+  $rows[] = $row;
+}
+if(!$result) throw new Exception($statement->error);
+$row = $result->fetch_object();
+$result->close();
+return $rows;
+}
+
+public function adminDeleteGallerie($uid){
+  $query = "DELETE FROM gallerie WHERE uid = ?";
+  $statement = ConnectionHandler::getConnection()->prepare($query);
+  $statement->bind_param('i',$uid);
+  $statement->execute();
+
+}
+
 
    
 }

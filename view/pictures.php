@@ -18,6 +18,7 @@ for($i=0; $i< count($pictures);$i++){
     echo "<img class='materialboxed'  width='650' src=".$baseUrl.$pictures[$i]->picture.">";
     echo "</div>";
 }
+
 ?>
 
 <script> $(document).ready(function(){
