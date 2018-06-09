@@ -17,6 +17,13 @@ $(document).ready(function () {
     $('.searchButton').click(function () {
         $('.user-container').addClass('.hidden')
     });
+
+
+    //Profil Bearbeiten
+
+    $('#changePw').click(function () {
+        $('.test').toggleClass('hidden')
+    });
 });
 
 

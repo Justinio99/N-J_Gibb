@@ -30,7 +30,7 @@ echo "<div style='display:flex; flex-wrap: wrap;'>";
   for($i = 0; $i < count($galleries); $i++){
   
     echo "<div class='card' >".
-    "<a href=/N-J_Gibb/public/galleries/adminDeleteGallerie?gid=".$galleries[$i]->gid.">".
+    "<a href=/N-J_Gibb/public/admin/deleteGallerieAndPicture?gid=".$galleries[$i]->gid.">".
     "<i class='material-icons dp48 '>delete</i>".
     "</a>".
     "<div  class='container'>".

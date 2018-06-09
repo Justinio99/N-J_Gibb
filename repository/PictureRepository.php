@@ -29,16 +29,32 @@ require_once '../lib/ConnectionHandler.php';
         return $rows;
     }
 
+    public function getFirstPicture($gid){
+      $query = "SELECT * FROM picture WHERE gid = ?";
+      $statement = ConnectionHandler::getConnection()->prepare($query);
+      $statement->bind_param('i',$gid);
+      $statement->execute();
+      $result = $statement->get_result();
+      $rows = array();
+      while($row =$result->fetch_object()){
+        $rows[] = $row;
+      }
+      if(!$result) throw new Exception($statement->error);
+      $row = $result->fetch_object();
+      $result->close();
+      return $rows;
+    }
     //This function expectes an array as Parameter!
     public function addTags($pid,$tagArray){
       
       $query = "INSERT INTO tags (pid,tag) VALUES (?,?)";
       for($i=0; $i< count($tagArray); $i++){
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('is', $pid, $tagArray[$i]->tag);
-        if(!$statement->execute()) throw new Exception($statement->error);
-      return $statement->insert_id;
+        $statement->bind_param('is', $pid, $tagArray[$i]);
+      
       }
+      if(!$statement->execute()) throw new Exception($statement->error);
+      return $statement->insert_id;
       
     }
 
@@ -46,6 +62,13 @@ require_once '../lib/ConnectionHandler.php';
       $query = "DELETE FROM picture WHERE uid = ?";
       $statement = ConnectionHandler::getConnection()->prepare($query);
       $statement->bind_param('i',$uid);
+      $statement->execute();
+    }
+
+    public function adminDeletePictureByGallerie($gid){
+      $query = "DELETE FROM picture WHERE gid = ?";
+      $statement = ConnectionHandler::getConnection()->prepare($query);
+      $statement->bind_param('i',$gid);
       $statement->execute();
     }
   }

@@ -16,10 +16,10 @@ $email = $userInfo->email;
 </form>
 
 <div style="margin-top:50px;" class="changePassword">
-<a class="waves-effect waves-light btn"><i class="material-icons right">update</i>Passwort ändern</a>
+<a class="waves-effect waves-light btn" id="changePw"><i class="material-icons right">update</i>Passwort ändern</a>
 </div>
 
-<div class="password-container">
+<div class="password-container test hidden">
 <form action="/N-J_Gibb/public/editProfil/updatePassword" method="post">
 <input class="pwInput" name="oldPw" type="text" placeholder="Altes Passwort">
 <input class="pwInput" name="newPw" type="text" placeholder="Neues Passwort">

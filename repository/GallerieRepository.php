@@ -40,10 +40,10 @@ public function deleteGallerie($gid){
 
 }
 
-public function updateGallerie($gid) {
-$query = " UPDATE FROM gallerie WHERE gid = ??";
+public function updateGallerie($name,$beschreibung,$gid) {
+$query = " UPDATE gallerie SET name= ?, beschreibung= ? WHERE gid = ?";
 $statement = ConnectionHandler::getConnection()->prepare($query);
-$statement->bind_param('ss', $gid);
+$statement->bind_param('ssi', $name,$beschreibung,$gid);
 $statement->execute();
 
 }
@@ -71,6 +71,19 @@ public function adminDeleteGallerie($uid){
   $statement->execute();
 
 }
+
+public function getGalleriesByGid($gid){
+$query = "SELECT * FROM gallerie WHERE gid = ?";
+$statement = ConnectionHandler::getConnection()->prepare($query);
+$statement->bind_param('i',$gid);
+$statement->execute();
+$result = $statement->get_result();
+if(!$result) throw new Exception($statement->error);
+$row = $result->fetch_object();
+$result->close();
+return $row;
+}
+
 
 
    

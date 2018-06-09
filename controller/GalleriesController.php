@@ -40,11 +40,40 @@ class GalleriesController{
         $view->display();
     }
 
-    public function deleteGallerie(){
+    public function editGallerie(){
+
         $gid = $_GET['gid'];
         $gallerieRepo = new GallerieRepository();
-        $gallerieRepo->deleteGallerie($gid);
-        header('Location: '.$GLOBALS['appurl'].'/galleries/index');
+        $view = new View('editGallerie');
+        $view->title = 'Gallerie Bearbeiten';
+        $view->heading = 'Gallerie Bearbeiten';
+        $view->galleries = $gallerieRepo->getGalleriesByGid($gid);
+        $view->display();
+        
+
+    }
+    public function displayRegisterErorrs($errorsRegister) {
+        $_SESSION['registerErrors'] = $errorsRegister;
+  
+     }
+
+    public function updateGallerie(){
+        $errorsRegister = [];
+        $gid = $_GET['gid'];
+        $name = $_POST['name'];
+        $beschrieb = $_POST['beschrieb'];
+        if($name != '' || $beschrieb != ''){
+            $gallerieRepo = new GallerieRepository();
+            $gallerieRepo->updateGallerie($name,$beschrieb,$gid);
+         
+            
+            header('Location: '.$GLOBALS['appurl'].'/galleries/index');  
+        }else{
+            array_push($errorsRegister,'Update fehlgschalagen');
+        $this->displayRegisterErorrs($errorsRegister); 
+        }
+        
+    
     }
 
    

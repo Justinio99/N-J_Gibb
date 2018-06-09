@@ -30,6 +30,15 @@ class adminController{
         header('Location: '.$GLOBALS['appurl'].'/admin/index');
     }
 
+    public function deleteGallerieAndPicture(){
+        $gid = $_GET['gid'];
+        $pictureRepo = new PictureRepository();
+        $gallerieRepo = new GallerieRepository();
+        $gallerieRepo->deleteGallerie($gid);
+        $pictureRepo->adminDeletePictureByGallerie($gid);
+        header('Location: '.$GLOBALS['appurl'].'/admin/index');
+    }
+
     
 
 }

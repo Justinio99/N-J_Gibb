@@ -3,7 +3,7 @@
 Select image to upload:
 <input type="file" name="upload" id="fileToUpload">
 <input placeholder="Name" type="text" name="titel" />
-<!-- <input type="text" id="testInput" value=""/> -->
+<input type="text" id="testInput" placeholder="#Tag#Tag" name="tags"/>
 
 
 <input placeholder="beschreibung" type="text" name="beschreibung" />
@@ -21,7 +21,8 @@ for($i=0; $i< count($pictures);$i++){
 
 ?>
 
-<script> $(document).ready(function(){
+<script>
+ $(document).ready(function(){
     $('.materialboxed').materialbox();
   });
 </script>

@@ -21,8 +21,12 @@ class PictureController{
     public function upload(){
         $gid = $_GET['gid'];
         $uid = $_SESSION['uid'];
+        $inputs = $_POST['tags'];
         $_SESSION['registerErrors'] = [];
         $errorsPicture=[];
+       
+      
+        
             if($_POST['submit']){
                 if(!empty($_FILES['upload']['name'])){
                     $title = $_POST['titel'] || '';
@@ -37,13 +41,14 @@ class PictureController{
                     $path_parts = pathinfo($file_name);
               
                     $newFileName = $path_parts['filename'].$randomName.'.'.$path_parts['extension'];
+                  
                
                     if(move_uploaded_file($file_name_tmp,$target_dir.$newFileName)){
                       $pictureRepo = new PictureRepository();
                       $fullNamePicture = "/"."Pictures/".$newFileName;
                       echo $fullNamePicture;
                       $pictureRepo->uploadPicture($uid,$gid, $fullNamePicture,$title,$beschreibung);
-                    }
+
                 }else{
                     array_push($errorsPicture, "Kein Bild ausgewählt");
                     $_SESSION['registerErrors'] = $errorsPicture;
@@ -58,5 +63,5 @@ class PictureController{
 
     
 
+    }
 }
-    ?>
