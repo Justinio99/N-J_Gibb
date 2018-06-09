@@ -21,7 +21,7 @@ class PictureController{
     public function upload(){
         $gid = $_GET['gid'];
         $uid = $_SESSION['uid'];
-        $inputs = $_POST['tags'];
+        $inputs = htmlspecialchars($_POST['tags']);
         $_SESSION['registerErrors'] = [];
         $errorsPicture=[];
        
@@ -29,8 +29,8 @@ class PictureController{
         
             if($_POST['submit']){
                 if(!empty($_FILES['upload']['name'])){
-                    $title = $_POST['titel'] || '';
-                    $beschreibung = $_POST['beschreibung'] || '';
+                    $title = htmlspecialchars($_POST['titel'] || '');
+                    $beschreibung = htmlspecialchars($_POST['beschreibung'] || '');
                     
                     $file_name = $_FILES['upload']['name'];
                     $file_type = $_FILES['upload']['type'];

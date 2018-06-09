@@ -31,11 +31,11 @@ require_once '../repository/LoginRepository.php';
       {
         $errorsRegister = [];
       $userRepository = new UserRepository();
-      $lastname = $_POST['lastname'];
-      $firstname = $_POST['firstname'];
-      $email = $_POST['email'];
+      $lastname = htmlspecialchars($_POST['lastname']);
+      $firstname = htmlspecialchars($_POST['firstname']);
+      $email = htmlspecialchars($_POST['email']);
       $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
-      $passwordRepeat = $_POST["pwRepeat"];
+      $passwordRepeat = htmlspecialchars($_POST["pwRepeat"]);
       $user = $userRepository->getUser($email);
          
       if($_POST['password'] != $passwordRepeat){
@@ -76,8 +76,8 @@ require_once '../repository/LoginRepository.php';
 
     public function login(){
       if($_POST['send']){
-        $email = $_POST['email'];
-        $passwordInput = $_POST['password'];
+        $email = htmlspecialchars($_POST['email']);
+        $passwordInput = htmlspecialchars($_POST['password']);
         $errorsLogin = [];
         $userRepository = new UserRepository();
         echo $userRepository->validateEmail($email);

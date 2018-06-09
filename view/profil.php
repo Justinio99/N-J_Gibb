@@ -4,7 +4,14 @@ $firstname = $userInfo->firstname;
 $email = $userInfo->email;
 
 ?>
+    <?php
 
+if(isset($_SESSION['registerErrors'])){
+  foreach($_SESSION['registerErrors'] as $value){
+    echo "<div>".$value."</div>";
+  }}
+  unset($_SESSION['registerErrors']);
+  ?>
 <form action="/N-J_Gibb/public/editProfil/updateProfil" method="post">
 <label>Vorname</label>
 <input type="text" name="vorname" value='<?php echo $firstname; ?>'><br>

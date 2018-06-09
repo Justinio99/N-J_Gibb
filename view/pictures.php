@@ -1,6 +1,6 @@
 
+
 <form action='/N-J_Gibb/public/picture/upload?gid=<?php echo $_GET['gid']; ?>' method="post" enctype="multipart/form-data">
-Select image to upload:
 <input type="file" name="upload" id="fileToUpload">
 <input placeholder="Name" type="text" name="titel" />
 <input type="text" id="testInput" placeholder="#Tag#Tag" name="tags"/>
@@ -11,20 +11,18 @@ Select image to upload:
 </form>
 
 
+
+<div class="picture-container">
 <?php 
 $baseUrl ="/N-J_Gibb";
 for($i=0; $i< count($pictures);$i++){
-    echo "<div>";
+    
     echo "<img class='materialboxed'  width='650' src=".$baseUrl.$pictures[$i]->picture.">";
-    echo "</div>";
+    
 }
 
 ?>
+</div>
 
-<script>
- $(document).ready(function(){
-    $('.materialboxed').materialbox();
-  });
-</script>
 
 

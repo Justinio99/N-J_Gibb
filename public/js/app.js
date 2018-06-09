@@ -24,6 +24,10 @@ $(document).ready(function () {
     $('#changePw').click(function () {
         $('.test').toggleClass('hidden')
     });
+
+    //Bilder vergrössern
+    $('.materialboxed').materialbox();
+
 });
 
 

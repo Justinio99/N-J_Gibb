@@ -30,11 +30,13 @@ class UserRepository extends Repository
 
 
     public function changePassword($uid,$password){
-        $query =" UPDATE benutzer set passwort=$password WHERE uid=$uid";
+        $query =" UPDATE benutzer set passwort= ? WHERE uid= ?";
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('is',$uid, $password);
+        $statement->bind_param('si', $password,$uid);
         $statement->execute();
     }
+
+  
 
     public function validateEmail($email){
         $mailValid = false;

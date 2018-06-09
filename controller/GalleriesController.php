@@ -21,8 +21,8 @@ class GalleriesController{
     public function addGallerie()
     {
         $userId = $_SESSION['uid'];
-        $name = $_POST['gallerieName'];
-        $beschrieb = $_POST['beschreiubng'];
+        $name = htmlspecialchars($_POST['gallerieName']);
+        $beschrieb = htmlspecialchars($_POST['beschreiubng']);
         $gallerieRepo = new GallerieRepository();
         if($name != ''){
             $gallerieRepo->createGallerie($userId,$name,$beschrieb);
@@ -60,8 +60,8 @@ class GalleriesController{
     public function updateGallerie(){
         $errorsRegister = [];
         $gid = $_GET['gid'];
-        $name = $_POST['name'];
-        $beschrieb = $_POST['beschrieb'];
+        $name = htmlspecialchars($_POST['name']);
+        $beschrieb = htmlspecialchars($_POST['beschrieb']);
         if($name != '' || $beschrieb != ''){
             $gallerieRepo = new GallerieRepository();
             $gallerieRepo->updateGallerie($name,$beschrieb,$gid);

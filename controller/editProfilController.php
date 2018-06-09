@@ -17,32 +17,54 @@ class editProfilController{
         $view->heading = 'Profil';
         $view->display();
     }
+    public function displayRegisterErorrs($errorsRegister) {
+        $_SESSION['registerErrors'] = $errorsRegister;
+  
+     }
     public function updateProfil(){
         $uid = $_SESSION['uid'];
-        $email = $_POST['email'];
-        $lastname = $_POST['nachname'];
-        $firstname = $_POST['vorname'];
+        $email = htmlspecialchars($_POST['email']);
+        $lastname = htmlspecialchars($_POST['nachname']);
+        $firstname = htmlspecialchars($_POST['vorname']);
         $userRepo = new UserRepository();
         $userRepo->updateUserProfil($uid,$email,$firstname,$lastname);
         
     }
     
     public function updatePassword(){
+        $errorsRegister =[];
         $userRepo = new UserRepository();
-        $uid = $_SESSION['uid'];
-        $oldPw = $_POST['oldPw'];
-        $newPw = $_POST['newPw'];
-        $repeatPw = $_POST['repeatPw'];
+        $uid =   htmlspecialchars($_SESSION['uid']);
+        $oldPw = htmlspecialchars($_POST['oldPw']);
+        
+        $newPw = htmlspecialchars($_POST['newPw']);
+        $repeatPw = htmlspecialchars($_POST['repeatPw']);
         $user = $userRepo->getUserById($uid);
        $passwordDB = $user->passwort;
        $newPassword = password_hash($newPw,PASSWORD_DEFAULT);
 
+       if($newPw == $repeatPw && $repeatPw && $newPw != '' && $repeatPw !=''){
+        echo "DB valid";
         if(password_verify($oldPw,$passwordDB)){
-            if($newPw === $repeatPw){
+          
+                echo "repeat valllid";
              $userRepo->changePassword($uid,$newPassword);
-             echo "yes";   
-            }
+             array_push($errorsRegister,'Passwort erfolgreich geändert');
+             $this->displayRegisterErorrs($errorsRegister); 
+             header('Location: '.$GLOBALS['appurl'].'/editProfil/index'); 
+            
+        }else{
+            array_push($errorsRegister,'Altes Passwort ist inkorrekt');
+            $this->displayRegisterErorrs($errorsRegister);
+             header('Location: '.$GLOBALS['appurl'].'/editProfil/index');
         }
+            }else{
+                echo "DB invalid";
+                array_push($errorsRegister,'Passwort stimmt nicht überein');
+                $this->displayRegisterErorrs($errorsRegister);
+                 header('Location: '.$GLOBALS['appurl'].'/editProfil/index');
+            }
+
     }
 
 }

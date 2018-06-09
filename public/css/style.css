@@ -110,32 +110,32 @@ i.material-icons.dp50 {
   right: 0;
 }
 
+/* Picture design */
 img{
   width:300px;
   height:200px;
   float: left;
+  border-radius: 20px;
+  margin-left: 10px;
 }
 
-<<<<<<< HEAD
-img.materialboxed {
-  position: relative;
+.picture-container {
+  display:flex;
   padding: 10px;
-  margin-top: 70px;
+  margin-top: 20px;
   border-radius: 20px;
   
 
 }
-=======
 /* resetPassword */
 .password-container{
   padding: 20px;
   width: 300px;
-  color:black;
+  color: black;
   height: 300px;
   background-color: white;
- margin: 0 auto;
+  margin-top: 10px;
 }
 .pwInput{
   color: black;
 }
->>>>>>> 0ff50b81c27af3753c16ad72d01284fd8f23e5f2
