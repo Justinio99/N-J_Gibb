@@ -139,3 +139,17 @@ img{
 .pwInput{
   color: black;
 }
+/* 
+Admin Styles */
+
+.label-admin{
+  font-weight: bold;
+  font-size: 25px;
+  color: white;
+}
+
+.user-container {
+  margin-bottom: 10px;
+    border-bottom: 3px solid white;
+    padding-bottom: 15px;
+}

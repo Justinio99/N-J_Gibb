@@ -22,7 +22,7 @@ class PictureController{
         $gid = $_GET['gid'];
         $uid = $_SESSION['uid'];
         $inputs = htmlspecialchars($_POST['tags']);
-        $_SESSION['registerErrors'] = [];
+        $errorsRegister = [];
         $errorsPicture=[];
        
       
@@ -46,12 +46,22 @@ class PictureController{
                     if(move_uploaded_file($file_name_tmp,$target_dir.$newFileName)){
                       $pictureRepo = new PictureRepository();
                       $fullNamePicture = "/"."Pictures/".$newFileName;
-                      echo $fullNamePicture;
-                      $pictureRepo->uploadPicture($uid,$gid, $fullNamePicture,$title,$beschreibung);
+                     $pathName = $_FILES['upload']['name'];
+                     $test = filesize($_FILES['upload']['size']);
+                     echo $test;
+                      if(2<1 ){
+
+                        $pictureRepo->uploadPicture($uid,$gid, $fullNamePicture,$title,$beschreibung);
+                      }else{
+                        array_push($errorsRegister,'Datei ist zu Gross!');
+                        $this->displayRegisterErorrs($errorsRegister);
+                      }
+                     
 
                 }else{
-                    array_push($errorsPicture, "Kein Bild ausgewählt");
-                    $_SESSION['registerErrors'] = $errorsPicture;
+                    
+                    array_push($errorsRegister,'Kein Bild ausgewählt');
+                    $this->displayRegisterErorrs($errorsRegister);
                     $pfad = $GLOBALS['appurl']."/picture/pictures?gid=".$gid;
                     header('Location: '.$pfad);
                 }

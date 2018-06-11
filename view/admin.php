@@ -1,5 +1,5 @@
 
-
+<lable class="label-admin">Users: </lable>
 <div class="user-container">
 <?php
 
@@ -22,7 +22,7 @@ for($x = 0; $x < count($users);$x++){
   
 ?>
 </div>
-
+<lable class="label-admin">Galleries: </lable>
 <div class="gallerie-container">
 <?php 
 echo "<div style='display:flex; flex-wrap: wrap;'>";

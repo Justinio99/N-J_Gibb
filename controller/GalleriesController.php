@@ -71,6 +71,7 @@ class GalleriesController{
         }else{
             array_push($errorsRegister,'Update fehlgschalagen');
         $this->displayRegisterErorrs($errorsRegister); 
+        header('Location: '.$GLOBALS['appurl'].'/galleries/editGallerie?gid='.$gid); 
         }
         
     
