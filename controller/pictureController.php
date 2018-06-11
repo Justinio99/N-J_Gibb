@@ -46,16 +46,7 @@ class PictureController{
                     if(move_uploaded_file($file_name_tmp,$target_dir.$newFileName)){
                       $pictureRepo = new PictureRepository();
                       $fullNamePicture = "/"."Pictures/".$newFileName;
-                     $pathName = $_FILES['upload']['name'];
-                     $test = filesize($_FILES['upload']['size']);
-                     echo $test;
-                      if(2<1 ){
-
-                        $pictureRepo->uploadPicture($uid,$gid, $fullNamePicture,$title,$beschreibung);
-                      }else{
-                        array_push($errorsRegister,'Datei ist zu Gross!');
-                        $this->displayRegisterErorrs($errorsRegister);
-                      }
+                      $pictureRepo->uploadPicture($uid,$gid, $fullNamePicture,$title,$beschreibung);
                      
 
                 }else{
