@@ -47,8 +47,7 @@ class PictureController{
                       $pictureRepo = new PictureRepository();
                       $fullNamePicture = "/"."Pictures/".$newFileName;
                       $pictureRepo->uploadPicture($uid,$gid, $fullNamePicture,$title,$beschreibung);
-                     
-
+                      
                 }else{
                     
                     array_push($errorsRegister,'Kein Bild ausgewählt');

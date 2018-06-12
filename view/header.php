@@ -33,8 +33,11 @@
               if(!isset($_SESSION['uid'])){
                 echo "<li><a href='".$GLOBALS['appurl']."/login'>Login</a></li>";   
               }
+              if(isset($_SESSION['uid'])){
+                echo "<li><a href='".$GLOBALS['appurl']."/editProfil/index'>Profil</a></li>"; 
+              }
               ?>
-             <li><a href="<?=$GLOBALS['appurl']?>/editProfil/index">Profil</a></li>
+             
       </ul>
   </nav>
   <ul class="sidenav" id="mobile-demo">
