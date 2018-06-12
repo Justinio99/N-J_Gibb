@@ -71,6 +71,20 @@ require_once '../lib/ConnectionHandler.php';
       $statement->bind_param('i',$gid);
       $statement->execute();
     }
+
+    //New functions 
+
+    public function maxId()
+    {
+        $query = "SELECT max(pid) as pid FROM picture";
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->execute();
+        $result = $statement->get_result();
+        if (!$result) throw Exception($statement->error);
+        $row = $result->fetch_object();
+        $result->close();
+        return $row;
+    }
   }
 ?>
 
