@@ -8,7 +8,7 @@
 }
 
 body{
-  background-color: 	#2F4F4F;
+  background-color:       #2F4F4F;
   margin: 0px;
   padding: 0px;
   padding-top: 0;
@@ -16,7 +16,7 @@ body{
 }
 
 input.btn.waves-effect.waves-light {
-  background-color: #FF8260;
+  background-color: #26a69a;
 }
 
 label.col-md-2.control-label{
@@ -74,7 +74,7 @@ a.brand-logo{
 }
 a.waves-effect.waves-light.btn-small {
 
-  background-color: #FF8260;
+  background-color: #26a69a;
 
 }
 p {
@@ -91,7 +91,7 @@ nav.navbar.navbar-default.navbar-fixed-top {
 
 button#submitGallerie.waves-effect.waves-light.btn-small {
 
-  background-color: #FF8260;
+  background-color: #26a69a;
 
 }
 

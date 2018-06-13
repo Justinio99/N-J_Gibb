@@ -30,27 +30,10 @@ $picture = $repo->getFirstPicture($galleries[$i]->gid);
     "</a>".
     "</div>";
 
-    // echo "<div class='row'>".
-    // "<div class='col s12 m7'>".
-    //   "<div class='card'>".
-    //     "<div class='card-image'>".
-    //       "<img src=".$baseUrl.$picture[$i]->picture.">".
-    //       "<span class='card-title'>".$galleries[$i]->name."</span>".
-    //     "</div>".
-    //     "<div class='card-content'>".
-    //       "<p style='color:black'>".$galleries[$i]->beschreibung."</p>".
-    //     "</div>".
-    //     "<div class='card-action'>".
-    //       "<a href=''>This is a link</a>".
-    //     "</div>".
-    //     "</div>".
-    //      "</div>". 
-    //      "</div>";
-
+   
      
 }
 
-// echo "</div>";
 
 function redirect($uid){
     var_dump($uid);
