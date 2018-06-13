@@ -1,5 +1,3 @@
-
-
 <form action='/N-J_Gibb/public/picture/upload?gid=<?php echo $_GET['gid']; ?>' method="post" enctype="multipart/form-data">
 <input type="file" name="upload" id="fileToUpload">
 <input placeholder="Name" type="text" name="titel" />
@@ -23,6 +21,3 @@ for($i=0; $i< count($pictures);$i++){
 
 ?>
 </div>
-
-
-
