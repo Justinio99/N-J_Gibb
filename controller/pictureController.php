@@ -31,8 +31,9 @@ class PictureController{
         
             if($_POST['submit']){
                 if(!empty($_FILES['upload']['name'])){
-                    $title = htmlspecialchars($_POST['titel'] || '');
-                    $beschreibung = htmlspecialchars($_POST['beschreibung'] || '');
+                    $title = "Nicitici";
+                    // htmlspecialchars($_POST['titel']);
+                    $beschreibung = htmlspecialchars($_POST['beschreibung']);
                     
                     $file_name = $_FILES['upload']['name'];
                     $file_type = $_FILES['upload']['type'];
@@ -78,6 +79,7 @@ class PictureController{
                                 imagedestroy($img);
 
                                 //TODO: Call Uploade function in repo / change upload function (params) in PictureRepo
+                                $pictureRepo->uploadPicture($pid,$gid,$newFileName,$titel,$beschreibung);
 
                 }else{
                     

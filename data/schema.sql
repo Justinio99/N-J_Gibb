@@ -20,7 +20,7 @@ CREATE TABLE gallerie(gid int PRIMARY KEY AUTO_INCREMENT,
 
 --Picture
  CREATE TABLE picture(pid int PRIMARY KEY AUTO_INCREMENT,
-                     uid int,
+                    
                      gid int,
                      picture varchar(70),
                      title varchar(50),

@@ -100,6 +100,20 @@ class UserRepository extends Repository
         $statement->execute();
     }
 
+    //New
+
+    public function maxId()
+    {
+        $query = "SELECT max(pid) as pid FROM benutzer";
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->execute();
+        $result = $statement->get_result();
+        if (!$result) throw Exception($statement->error);
+        $row = $result->fetch_object();
+        $result->close();
+        return $row;
+    }
+
    
 }
 

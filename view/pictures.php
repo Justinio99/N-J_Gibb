@@ -12,7 +12,7 @@
 
 <div class="picture-container">
 <?php 
-$baseUrl ="/N-J_Gibb";
+$baseUrl ="/N-J_Gibb/Pictures/";
 for($i=0; $i< count($pictures);$i++){
     
     echo "<img class='materialboxed'  width='650' src=".$baseUrl.$pictures[$i]->picture.">";

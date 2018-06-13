@@ -5,10 +5,10 @@ require_once '../lib/ConnectionHandler.php';
   class PictureRepository extends Repository
   {
     
-    public function uploadPicture($uid,$gid,$picture,$titel, $beschreibung){
-      $query = "INSERT INTO picture (uid,gid,picture,title,beschreibung) VALUES (?,?,?,?,?)";
+    public function uploadPicture($pid,$gid,$picture,$titel,$beschreibung){
+      $query = "INSERT INTO picture (pid,gid,picture,title,beschreibung) VALUES (?,?,?,?,?)";
       $statement = ConnectionHandler::getConnection()->prepare($query);
-      $statement->bind_param('iisss', $uid,$gid,$picture,$titel,$beschreibung);
+      $statement->bind_param('iisss', $pid,$gid,$picture,$titel,$beschreibung);
       if(!$statement->execute()) throw new Exception($statement->error);
       return $statement->insert_id;
     }
