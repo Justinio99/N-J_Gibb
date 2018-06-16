@@ -23,11 +23,15 @@ class editProfilController{
      }
     public function updateProfil(){
         $uid = $_SESSION['uid'];
+        $errorsRegister =[];
         $email = htmlspecialchars($_POST['email']);
         $lastname = htmlspecialchars($_POST['nachname']);
         $firstname = htmlspecialchars($_POST['vorname']);
         $userRepo = new UserRepository();
+        array_push($errorsRegister,'Benutzer erfolgreich geändert');
+             $this->displayRegisterErorrs($errorsRegister); 
         $userRepo->updateUserProfil($uid,$email,$firstname,$lastname);
+        header('Location: '.$GLOBALS['appurl'].'/editProfil/index');
         
     }
     

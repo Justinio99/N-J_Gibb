@@ -76,7 +76,11 @@ class GalleriesController{
         
     
     }
-
+    public function deleteGallerie(){
+        $gallerieRepo = new GallerieRepository();
+        $gid = $_GET['gid'];
+        $gallerieRepo->deleteGallerie($gid);
+    }
    
    
 
