@@ -28,6 +28,10 @@ $(document).ready(function () {
     //Bilder vergrössern
     $('.materialboxed').materialbox();
 
+    // Navbar Toggle
+    $(document).ready(function () {
+        $('.sidenav').sidenav();
+    });
 });
 
 

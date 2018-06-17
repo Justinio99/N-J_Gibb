@@ -1,4 +1,10 @@
 
+.nav-container{
+  background-color: white;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
 
 .nav-wrapper{
   position: relative;

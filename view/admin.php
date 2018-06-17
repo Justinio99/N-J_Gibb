@@ -3,7 +3,7 @@
 <div class="user-container">
 <?php
 $userRepository = new UserRepository();
-$user = $userRepository->getUser($email);
+$user = $userRepository->getUserByUid($_SESSION['uid']);
 $errorAdmin = [];
 if($user->role == 1){  
   for($x = 0; $x < count($users);$x++){

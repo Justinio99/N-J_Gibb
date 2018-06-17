@@ -52,25 +52,12 @@
   if(isset($_SESSION['uid'])){
     echo "<li><a href='".$GLOBALS['appurl']."/editProfil/index'>Profil</a></li>"; 
   }
-
-    echo "<li><a href='".$GLOBALS['appurl']."/login/registration'>Registration</a></li>"; 
+  echo "<li><a href='".$GLOBALS['appurl']."/login/registration'>Registration</a></li>"; 
   
     ?>
   </ul>
   
-  <script> $(document).ready(function(){
-    $('.sidenav').sidenav();
-  });</script>
+  
     <div class="container">
     <h3><?= $heading ?></h3>
 
-<style>
-
-.nav-container{
-  background-color: white;
-    position: absolute;
-    top: 0;
-    width: 100%;
-}
-
-</style>
