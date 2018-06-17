@@ -1,8 +1,11 @@
 
 <?php
+$gid =$_GET['gid'];
+ $gallerieRepo = new GallerieRepository();
+ $galleries = $gallerieRepo->getGalleriesById($gid);
 $name = $galleries->name;
 $beschreibung = $galleries->beschreibung;
-$gid =$_GET['gid'];
+
 
 ?>
     <?php

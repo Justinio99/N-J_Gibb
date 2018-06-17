@@ -84,6 +84,18 @@ $result->close();
 return $row;
 }
 
+public function getGalleriesById($gid){
+  $query = "SELECT * FROM gallerie WHERE gid = ?";
+$statement = ConnectionHandler::getConnection()->prepare($query);
+$statement->bind_param('i',$gid);
+$statement->execute();
+$result = $statement->get_result();
+if(!$result) throw new Exception($statement->error);
+$row = $result->fetch_object();
+$result->close();
+return $row;
+}
+
 
 
    

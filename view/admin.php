@@ -7,10 +7,14 @@ $user = $userRepository->getUserByUid($_SESSION['uid']);
 $errorAdmin = [];
 if($user->role == 1){  
   for($x = 0; $x < count($users);$x++){
+    //Dont show Admins only general Users
     if($users[$x]->role != 1){
       echo "<div class='card' >".
       "<a href=/N-J_Gibb/public/admin/deleteAllUserData?uid=".$users[$x]->uid." onclick='return confirm(`Are you sure you want to delete this User?`);'>".
       "<i class='material-icons dp48 '>delete</i>".
+      "</a>".
+      "<a href=/N-J_Gibb/public/admin/editUser?uid=".$users[$x]->uid.">".
+      "<i class='material-icons dp48 hideDelete'>edit</i>".
       "</a>".
       "<div  class='container'>".
       "<p class='name-gallerie'><b>".$users[$x]->lastname.' '.$users[$x]->firstname."</b></h4> ".
@@ -35,6 +39,9 @@ if($user->role == 1){
       echo "<div class='card' >".
       "<a href=/N-J_Gibb/public/admin/deleteGallerieAndPicture?gid=".$galleries[$i]->gid."  onclick='return confirm(`Are you sure you want to delete this Gallerie?`);'>".
       "<i class='material-icons dp48 ' >delete</i>".
+      "</a>".
+      "<a href=/N-J_Gibb/public/galleries/editGallerie?gid=".$galleries[$i]->gid.">".
+      "<i class='material-icons dp48 hideDelete'>edit</i>".
       "</a>".
       "<div  class='container'>".
       "<p class='name-gallerie'><b>".$galleries[$i]->name."</b></h4> ".

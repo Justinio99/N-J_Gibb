@@ -59,6 +59,8 @@ class GalleriesController{
      }
 
     public function updateGallerie(){
+        $userRepo = new UserRepository();
+        $user = $userRepo->getUserByUid($_SESSION['uid']);
         $errorsRegister = [];
         $gid = $_GET['gid'];
         $name = htmlspecialchars($_POST['name']);
@@ -67,8 +69,14 @@ class GalleriesController{
             $gallerieRepo = new GallerieRepository();
             $gallerieRepo->updateGallerie($name,$beschrieb,$gid);
          
+            if($user->role == 1){
+            header('Location: '.$GLOBALS['appurl'].'/admin/index');
+            }
+            else{
+                 header('Location: '.$GLOBALS['appurl'].'/galleries/index');
+                }
             
-            header('Location: '.$GLOBALS['appurl'].'/galleries/index');  
+             
         }else{
             array_push($errorsRegister,'Update fehlgschalagen');
         $this->displayRegisterErorrs($errorsRegister); 
