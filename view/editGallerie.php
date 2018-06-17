@@ -9,7 +9,7 @@ $gid =$_GET['gid'];
 
 if(isset($_SESSION['registerErrors'])){
   foreach($_SESSION['registerErrors'] as $value){
-    echo "<div>".$value."</div>";
+    echo "<div class='error-style'>".$value."</div>";
   }
   
 

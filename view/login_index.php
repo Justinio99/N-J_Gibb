@@ -19,7 +19,7 @@
 
   if(isset($_SESSION['loginErrors'])){
     foreach ($_SESSION['loginErrors'] as $value){
-      echo "<div>".$value."</div>";
+      echo "<div class='error-style'>".$value."</div>";
     }
   }
   

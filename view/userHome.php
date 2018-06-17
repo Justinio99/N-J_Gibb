@@ -15,7 +15,7 @@ for($i=0; $i < count($galleries); $i++){
 
 $picture = $repo->getFirstPicture($galleries[$i]->gid);
     echo "<div class='card' >".
-    "<a href=/N-J_Gibb/public/galleries/deleteGallerie?gid=".$galleries[$i]->gid.">".
+    "<a href=/N-J_Gibb/public/galleries/deleteGallerie?gid=".$galleries[$i]->gid." onclick='return confirm(`Are you sure you want to delete this Gallerie?`);'>".
     "<i class='material-icons dp48 hideDelete'>delete</i>".
     "</a>".
     "<a href=/N-J_Gibb/public/galleries/editGallerie?gid=".$galleries[$i]->gid.">".

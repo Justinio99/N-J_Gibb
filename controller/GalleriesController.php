@@ -43,11 +43,12 @@ class GalleriesController{
     public function editGallerie(){
 
         $gid = $_GET['gid'];
+        $uid = $_SESSION['uid'];
         $gallerieRepo = new GallerieRepository();
         $view = new View('editGallerie');
         $view->title = 'Gallerie Bearbeiten';
         $view->heading = 'Gallerie Bearbeiten';
-        $view->galleries = $gallerieRepo->getGalleriesByGid($gid);
+        $view->galleries = $gallerieRepo->getGalleriesByGid($gid,$uid);
         $view->display();
         
 

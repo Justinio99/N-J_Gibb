@@ -153,3 +153,6 @@ Admin Styles */
     border-bottom: 3px solid white;
     padding-bottom: 15px;
 }
+.error-style{
+  color: #dd5600;
+}

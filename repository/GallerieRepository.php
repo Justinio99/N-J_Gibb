@@ -72,10 +72,10 @@ public function adminDeleteGallerie($uid){
 
 }
 
-public function getGalleriesByGid($gid){
-$query = "SELECT * FROM gallerie WHERE gid = ?";
+public function getGalleriesByGid($gid,$uid){
+$query = "SELECT * FROM gallerie WHERE gid = ? AND uid = ?";
 $statement = ConnectionHandler::getConnection()->prepare($query);
-$statement->bind_param('i',$gid);
+$statement->bind_param('ii',$gid,$uid);
 $statement->execute();
 $result = $statement->get_result();
 if(!$result) throw new Exception($statement->error);

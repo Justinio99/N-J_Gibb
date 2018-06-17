@@ -12,12 +12,16 @@
 
 <div class="picture-container">
 <?php 
+if(isset($_SESSION['uid'])){
 $baseUrl ="/N-J_Gibb/Pictures/";
 for($i=0; $i< count($pictures);$i++){
     
     echo "<img class='materialboxed'  width='650' src=".$baseUrl.$pictures[$i]->picture.">";
     
 }
-
+}else{
+   echo  "Keine Berechtigung!";
+   header('Location: '.$GLOBALS['appurl'].'/login');
+}
 ?>
 </div>

@@ -19,23 +19,11 @@ class adminController{
       $view->display();
     }
 
-    public function deleteAllUserData(){
-        $uid = $_GET['uid'];
-        $pictureRepo = new PictureRepository();
-        $gallerieRepo = new GallerieRepository();
-        $userRepo = new UserRepository();
-        $pictureRepo->adminDeletePicture($uid);
-        $gallerieRepo->adminDeleteGallerie($uid);
-        $userRepo->adminDeleteUser($uid);
-        header('Location: '.$GLOBALS['appurl'].'/admin/index');
-    }
 
     public function deleteGallerieAndPicture(){
         $gid = $_GET['gid'];
-        $pictureRepo = new PictureRepository();
         $gallerieRepo = new GallerieRepository();
         $gallerieRepo->deleteGallerie($gid);
-        $pictureRepo->adminDeletePictureByGallerie($gid);
         header('Location: '.$GLOBALS['appurl'].'/admin/index');
     }
 
