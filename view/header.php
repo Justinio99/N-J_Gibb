@@ -40,12 +40,24 @@
              
       </ul>
   </nav>
+
   <ul class="sidenav" id="mobile-demo">
-    <li><a href="sass.html">Sass</a></li>
-    <li><a href="badges.html">Components</a></li>
-    <li><a href="collapsible.html">Javascript</a></li>
-    <li><a href="mobile.html">Mobile</a></li>
+  <?php
+  if(isset($_SESSION['uid'])){
+    echo "<li><a href='".$GLOBALS['appurl']."/login/logout'>Logout</a></li>";   
+  }
+  if(!isset($_SESSION['uid'])){
+    echo "<li><a href='".$GLOBALS['appurl']."/login'>Login</a></li>";   
+  }
+  if(isset($_SESSION['uid'])){
+    echo "<li><a href='".$GLOBALS['appurl']."/editProfil/index'>Profil</a></li>"; 
+  }
+
+    echo "<li><a href='".$GLOBALS['appurl']."/login/registration'>Registration</a></li>"; 
+  
+    ?>
   </ul>
+  
   <script> $(document).ready(function(){
     $('.sidenav').sidenav();
   });</script>
