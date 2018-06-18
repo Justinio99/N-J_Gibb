@@ -21,14 +21,14 @@ class UserRepository extends Repository
     }
 
         public function updateUserProfil($uid,$email,$firstname,$lastname){
-            $query = "UPDATE  benutzer SET email= ?, firstname= ?, lastname= ? WHERE uid= ?";
+            $query = "UPDATE  benutzer SET email=$email,firstname=$firstname,lastname=$lastname WHERE uid=$uid";
             $statement = ConnectionHandler::getConnection()->prepare($query);
-            $statement->bind_param('sssi', $email,$firstname,$lastname,$uid);
             if(!$statement->execute()) throw new Exception($statement->error);
                 return $statement->insert_id;
             
         }
-     
+
+
     public function changePassword($uid,$password){
         $query =" UPDATE benutzer set passwort= ? WHERE uid= ?";
         $statement = ConnectionHandler::getConnection()->prepare($query);
@@ -100,31 +100,6 @@ class UserRepository extends Repository
         $statement->execute();
     }
 
-    //New
-
-    public function maxId()
-    {
-        $query = "SELECT max(pid) as pid FROM benutzer";
-        $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->execute();
-        $result = $statement->get_result();
-        if (!$result) throw Exception($statement->error);
-        $row = $result->fetch_object();
-        $result->close();
-        return $row;
-    }
-
-    public function getUserByUid($uid){
-        $query = "SELECT * FROM benutzer WHERE uid = ?";
-        $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('i',$uid);
-        $statement->execute();
-        $result = $statement->get_result();
-        if(!$result) throw new Exception($statement->error);
-        $row = $result->fetch_object();
-        $result->close();
-        return $row;
-    }
 
    
 }
