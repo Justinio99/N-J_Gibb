@@ -25,8 +25,6 @@ $(document).ready(function () {
         $('.test').toggleClass('hidden')
     });
 
-    //Bilder vergrössern
-    $('.materialboxed').materialbox();
 
     // Navbar Toggle
     $(document).ready(function () {
