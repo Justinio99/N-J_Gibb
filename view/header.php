@@ -37,6 +37,9 @@
               if(isset($_SESSION['uid'])){
                 echo "<li><a href='".$GLOBALS['appurl']."/editProfil/index'>Profil</a></li>"; 
               }
+              if(isset($_SESSION['uid'])){
+                echo "<li><a href='".$GLOBALS['appurl']."/galleries/index'>Gallerie</a></li>"; 
+              }
               ?>
              
       </ul>
@@ -52,6 +55,9 @@
   }
   if(isset($_SESSION['uid'])){
     echo "<li><a href='".$GLOBALS['appurl']."/editProfil/index'>Profil</a></li>"; 
+  }
+  if(isset($_SESSION['uid'])){
+    echo "<li><a href='".$GLOBALS['appurl']."/galleries/index'>Gallerie</a></li>"; 
   }
   echo "<li><a href='".$GLOBALS['appurl']."/login/registration'>Registration</a></li>"; 
   
