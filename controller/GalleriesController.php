@@ -2,6 +2,7 @@
 
 require_once '../repository/GallerieRepository.php';
 require_once '../repository/UserRepository.php';
+require_once '../repository/PictureRepository.php';
 
 class GalleriesController{
 
@@ -87,8 +88,17 @@ class GalleriesController{
     }
     public function deleteGallerie(){
         $gallerieRepo = new GallerieRepository();
+        $picturePepo = new PictureRepository();
         $gid = $_GET['gid'];
         $gallerieRepo->deleteGallerie($gid);
+        $picturesName = $picturePepo->getPicturesByGid($gid);
+        
+        $thumnUrl ="/N-J_Gibb/thumbs/";
+        $pictureUrl ="/N-J_Gibb/Pictures/";
+     var_dump($pictures);
+        for($j =0; $j < count($pictures->picture); $j++){
+            unlink($thumnUrl.$pictures->picture[$j]);
+        }
     }
    
    

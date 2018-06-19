@@ -124,7 +124,7 @@ img{
   border-radius: 20px;
   margin-left: 10px;
 }
-
+*/
 .picture-container {
   display:flex;
   padding: 10px;
@@ -133,7 +133,7 @@ img{
   
 
 }
-*/
+
 /* resetPassword */
 .password-container{
   padding: 20px;
@@ -179,15 +179,15 @@ p {
   margin-bottom: 20px;
 }
 
-.card {
+.card-pic {
   margin: 10px;
 }
 
-.card, .card-nav ul {
+.card-pic, .card-nav ul {
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
 }
 
-.card {
+.card-pic {
   position: relative;
   float: left;
   width: 200px;

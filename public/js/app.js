@@ -30,6 +30,13 @@ $(document).ready(function () {
     $(document).ready(function () {
         $('.sidenav').sidenav();
     });
+
+    //Add Picute 
+
+    $('#add-picture').click(function () {
+        $('.uploade-picture').toggleClass('hidden');
+    });
+
 });
 
 
