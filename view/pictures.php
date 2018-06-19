@@ -12,7 +12,7 @@
 
 
 
-<div class="picture-container">
+<div class="picture-container" style='display: flex;flex-wrap: wrap;';>
 <?php 
 if(isset($_SESSION['uid'])){
 $thumnUrl ="/N-J_Gibb/thumbs/";

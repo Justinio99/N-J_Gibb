@@ -90,15 +90,18 @@ class GalleriesController{
         $gallerieRepo = new GallerieRepository();
         $picturePepo = new PictureRepository();
         $gid = $_GET['gid'];
-        $gallerieRepo->deleteGallerie($gid);
         $picturesName = $picturePepo->getPicturesByGid($gid);
         
-        $thumnUrl ="/N-J_Gibb/thumbs/";
-        $pictureUrl ="/N-J_Gibb/Pictures/";
-     var_dump($pictures);
-        for($j =0; $j < count($pictures->picture); $j++){
-            unlink($thumnUrl.$pictures->picture[$j]);
+        
+        $thumnUrl ="../thumbs/";
+        $pictureUrl ="../Pictures/";
+     var_dump($picturesName[0]->picture);
+        for($j =0; $j < count($picturesName); $j++){
+            unlink($thumnUrl.$picturesName[$j]->picture);
+            unlink($pictureUrl.$picturesName[$j]->picture);
         }
+       $gallerieRepo->deleteGallerie($gid);
+       header('Location: '.$GLOBALS['appurl'].'/galleries/index');
     }
    
    

@@ -6,15 +6,14 @@ if(!isset($_SESSION['uid'])){
 }else{
 echo "<p>Willkommen ".$_SESSION['userName']."</p>";
 
-// echo "<div style='float:left;'>";
 $baseUrl ="/N-J_Gibb";
 
+echo "<div style=' display: flex;flex-wrap: wrap;'>";
 $repo = new PictureRepository();
 for($i=0; $i < count($galleries); $i++){
 
-
 $picture = $repo->getFirstPicture($galleries[$i]->gid);
-    echo "<div class='card' >".
+    echo "<div class='card'>".
     "<a href=/N-J_Gibb/public/galleries/deleteGallerie?gid=".$galleries[$i]->gid." onclick='return confirm(`Are you sure you want to delete this Gallerie?`);'>".
     "<i class='material-icons dp48 hideDelete'>delete</i>".
     "</a>".
@@ -33,7 +32,7 @@ $picture = $repo->getFirstPicture($galleries[$i]->gid);
    
      
 }
-
+echo "</div>";
 
 function redirect($uid){
     var_dump($uid);

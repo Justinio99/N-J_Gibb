@@ -60,7 +60,7 @@ a.brand-logo{
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 25%;
+  width: 180px;
   margin: 7px !important;
 }
 
@@ -190,7 +190,7 @@ p {
 .card-pic {
   position: relative;
   float: left;
-  width: 200px;
+  width: 180px;
   border-radius: 4px;
   background: #fff;
   overflow: hidden;

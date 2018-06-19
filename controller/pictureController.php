@@ -77,8 +77,9 @@ class PictureController{
                                 imagedestroy($thumbnail);
                                 imagedestroy($img);
 
-                                //TODO: Call Uploade function in repo / change upload function (params) in PictureRepo
                                 $pictureRepo->uploadPicture($pid,$gid,$newFileName,$title,$beschreibung);
+                                $pfad = $GLOBALS['appurl']."/picture/pictures?gid=".$gid;
+                                header('Location: '.$pfad);
 
                 }else{
                     
