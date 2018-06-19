@@ -26,7 +26,13 @@ for($i=0; $i< count($pictures);$i++){
    </header>
    <section class="card-body">
      <span>'.$pictures[$i]->title.'</span>
-     <p style="color:black;">'.$pictures[$i]->beschreibung.'</p>
+     <p id="paragraph" style="color:black;">'.$pictures[$i]->beschreibung.'</p>
+     <a href="/N-J_Gibb/public/picture/deletePicture?pid='.$pictures[$i]->pid."&gid=".$pictures[$i]->gid.'" onclick=`return confirm("Are you sure you want to delete this Gallerie?");`>
+    <i class="material-icons dp48 ">delete</i>
+    </a>
+    <a href="/N-J_Gibb/public/picture/editPicture?pid='.$pictures[$i]->pid."&gid=".$pictures[$i]->gid.'" onclick=`return confirm("Are you sure you want to delete this Gallerie?");`>
+    <i class="material-icons dp48 ">edit</i>
+    </a>
    </section>
  </div>';
 }

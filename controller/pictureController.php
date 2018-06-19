@@ -6,7 +6,7 @@ require_once '../repository/PictureRepository.php';
 class PictureController
 
 	{
-	public
+	 
 
 	function pictures()
 		{
@@ -19,16 +19,52 @@ class PictureController
 		$view->display();
 		}
 
-	public
 
-	function displayUploadeErorrs($errorsPicture)
+	
+
+	public function displayUploadeErorrs($errorsPicture)
 		{
 		$_SESSION['registerErrors'] = $errorsPicture;
-		}
+        }
+    
+    public function editPicture(){
+        $pid = $_GET['pid'];
+        $gid = $_GET['gid'];
+		$view = new View('editPicture');
+		$view->title = 'Edit Pictures';
+        $view->heading = 'Edit Pictures';
+        $view->gid = $_GET['gid'];
+		$pictureRepo = new PictureRepository();
+		$view->picture = $pictureRepo->getPictureByPid($pid);
+		$view->display();
+    }
+    public function updatePicture(){
+        $pid = $_GET['pid'];
+        $gid = $_GET['gid'];
+        $pictureRepo = new PictureRepository();
+        $titel = $_POST['titel'];
+        $beschrib = $_POST['beschrieb'];
+        $pictureRepo->updatePicture($titel,$beschrib,$pid);
+        $pfad = $GLOBALS['appurl'] . "/galleries/index";
+        header('Location: ' . $pfad);
+    }
 
-	public
+    public function deletePicture(){
+        $pictureRepo = new PictureRepository();
+        $pid = $_GET['pid'];
+        $gid = $_GET['gid'];
+        
+        $singlePic = $pictureRepo->getPictureByPid($pid);
+        unlink("../thumbs/".$singlePic->picture);
+        unlink("../Pictures/".$singlePic->picture);
+        var_dump($singlePic->picture);
+        $pictureRepo->deletePicture($pid);
+        $pfad = $GLOBALS['appurl'] . "/picture/pictures?gid=" . $gid;
+        header('Location: ' . $pfad);
 
-	function upload()
+    }
+
+	public function upload()
 		{
 		$pictureRepo = new PictureRepository();
 		$gid = $_GET['gid'];
@@ -111,4 +147,6 @@ class PictureController
 				}
 			}
 		}
-	}
+    
+    
+    }

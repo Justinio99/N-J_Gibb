@@ -85,6 +85,34 @@ require_once '../lib/ConnectionHandler.php';
         $result->close();
         return $row;
     }
+
+    public function deletePicture($pid){
+      $query = "DELETE FROM picture WHERE pid = ?";
+      $statement = ConnectionHandler::getConnection()->prepare($query);
+      $statement->bind_param('i',$pid);
+      $statement->execute();
+
+    }
+
+    public function getPictureByPid($pid){
+      $query = "SELECT * FROM picture WHERE pid = ?";
+      $statement = ConnectionHandler::getConnection()->prepare($query);
+      $statement->bind_param('i',$pid);
+      $statement->execute();
+      $result = $statement->get_result();
+      if(!$result) throw new Exception($statement->error);
+      $row = $result->fetch_object();
+      $result->close();
+      return $row;
+    }
+
+    public function updatePicture($title,$beschreibung,$pid){
+      $query = " UPDATE picture SET title= ?, beschreibung= ? WHERE pid = ?";
+      $statement = ConnectionHandler::getConnection()->prepare($query);
+      $statement->bind_param('ssi', $title,$beschreibung,$pid);
+      $statement->execute();
+    }
+    
   }
 ?>
 

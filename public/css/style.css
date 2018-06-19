@@ -175,9 +175,7 @@ span {
 
 }
 
-p {
-  margin-bottom: 20px;
-}
+
 
 .card-pic {
   margin: 10px;
@@ -186,7 +184,9 @@ p {
 .card-pic, .card-nav ul {
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
 }
-
+#paragraph{
+  font-size: 11px;
+}
 .card-pic {
   position: relative;
   float: left;
@@ -209,7 +209,7 @@ p {
   max-width: 100%;
 }
 .with-photo .card-header {
-  height: 120px;
+  height: 100px;
   padding: 0;
   overflow: hidden;
 }
