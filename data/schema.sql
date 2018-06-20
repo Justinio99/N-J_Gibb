@@ -30,9 +30,7 @@ CREATE TABLE gallerie(gid int PRIMARY KEY AUTO_INCREMENT,
                      );
 --tag
 CREATE TABLE tags(tid int PRIMARY KEY AUTO_INCREMENT,
-                 pid int,
-                 tag varchar(20),
-                  FOREIGN KEY (pid) REFERENCES picture(pid) on delete cascade
+                 tag varchar(20)
                  );
 
 --role
@@ -41,14 +39,12 @@ CREATE TABLE role(rid int PRIMARY KEY AUTO_INCREMENT,
                     beschreibung varchar(200)
                 );
 
---userPicture
-CREATE TABLE userPicture(upid int PRIMARY KEY AUTO_INCREMENT,
-                         uid int,
-                         pid int,
-                         tid int,
-                         FOREIGN KEY (uid) REFERENCES benutzer(uid) on delete cascade,
-                         FOREIGN KEY (pid) REFERENCES picture(pid) on delete cascade,
-                         FOREIGN KEY (tid) REFERENCES tags(tid) on delete cascade
-                         );
-
+--picture_tag
+CREATE TABLE picture_tag(
+  tpid        int PRIMARY KEY AUTO_INCREMENT,
+  tid         int,
+  pid         int,
+  FOREIGN KEY (tid) REFERENCES tags(tid) on delete cascade,
+  FOREIGN KEY (pid) REFERENCES picture(pid) on delete cascade
+);
 
