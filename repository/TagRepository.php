@@ -1,11 +1,11 @@
 
 <?php
-require_once '../repository/TagsRepository.php';
+require_once '../lib/Repository.php';
+require_once '../lib/ConnectionHandler.php';
 
-class TagsRepository
+class TagRepository extends Repository
 {
-    protected $tablename = 'tags';
-    protected $pictureTag = 'picture_tag';
+
     public function addTagsToPicture($pid, $tags){
         $query = "INSERT INTO picture_tag (pid, tid) VALUES (?,?)";
         $statement = ConnectionHandler::getConnection()->prepare($query);
@@ -14,7 +14,7 @@ class TagsRepository
         return $statement->insert_id;
     }
     public function getTagsByPid($pid){
-        $query = "select t.tid TID, TAG, tp.pid PID from tags t join picture_tag tp on tp.tid = t.tid where tp.pid = ?;";
+        $query = "select t.tid tid, tag, tp.pid pid from tags t join picture_tag tp on tp.tid = t.tid where tp.pid = ?;";
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->bind_param('i',$pid);
         $statement->execute();
@@ -28,16 +28,16 @@ class TagsRepository
         $result->close();
         return $rows;
     }
-    public function insertTags($tags, $description)
+    public function insertTags($tags)
     {
-        $query = "INSERT INTO tags (TAG,DESCRIPTION) VALUES (?,?)";
+        $query = "INSERT INTO tags (tag) VALUES (?)";
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('ss',$tags,$description);
+        $statement->bind_param('s',$tags);
         if (!$statement->execute()) throw Exception($statement->error);
         return $statement->insert_id;
     }
     public function selectTagIdfromTag_Picture($pid){
-        $query = "SELECT TID FROM picture_tag WHERE PID = ?";
+        $query = "SELECT tid FROM picture_tag WHERE pid = ?";
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->bind_param('i',$pid);
         $statement->execute();
@@ -60,7 +60,7 @@ class TagsRepository
     {
     }
     public function selectTag($tag){
-        $query = "SELECT TID FROM tags WHERE TAG = ?";
+        $query = "SELECT tid FROM tags WHERE tag = ?";
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->bind_param('s',$tag);
         $statement->execute();
