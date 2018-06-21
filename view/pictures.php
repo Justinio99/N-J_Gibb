@@ -1,3 +1,4 @@
+<?php
 
 <a style="margin-bottom:10px;" id="add-picture" class="btn-floating btn-large waves-effect waves-light gray"><i class="material-icons">add</i></a>
 <form class="uploade-picture hidden" action='/N-J_Gibb/public/picture/upload?gid=<?php echo $_GET['gid']; ?>' method="post" enctype="multipart/form-data">
@@ -25,6 +26,7 @@ for($i=0; $i< count($pictures);$i++){
      <img src="'.$thumnUrl.$pictures[$i]->picture.'" alt=""></a>
    </header>
    <section class="card-body">
+<<<<<<< HEAD
      <span>'.$pictures[$i]->title.'</span>
      <p id="paragraph" style="color:black;">'.$pictures[$i]->beschreibung.'</p>
      <a href="/N-J_Gibb/public/picture/deletePicture?pid='.$pictures[$i]->pid."&gid=".$pictures[$i]->gid.'" onclick=`return confirm("Are you sure you want to delete this Gallerie?");`>
@@ -33,6 +35,8 @@ for($i=0; $i< count($pictures);$i++){
     <a href="/N-J_Gibb/public/picture/editPicture?pid='.$pictures[$i]->pid."&gid=".$pictures[$i]->gid.'" onclick=`return confirm("Are you sure you want to delete this Gallerie?");`>
     <i class="material-icons dp48 ">edit</i>
     </a>
+=======
+>>>>>>> dev_tags
    </section>
  </div>';
 }

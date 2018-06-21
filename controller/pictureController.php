@@ -6,16 +6,44 @@ require_once '../repository/PictureRepository.php';
 class PictureController
 
 	{
+<<<<<<< HEAD
 	 
 
 	function pictures()
+=======
+	public function pictures()
+>>>>>>> dev_tags
 		{
-		$gid = $_GET['gid'];
+		error_reporting($gid = $_GET['gid']);
+		$searchStr = $_POST['searchTag'];
 		$view = new View('pictures');
 		$view->title = 'User Pictures';
 		$view->heading = 'User Pictures';
 		$pictureRepo = new PictureRepository();
-		$view->pictures = $pictureRepo->getPicturesByGid($gid);
+		if($_POST['searchTag'] != ''){
+		if(isset($_POST['searchTag'])){
+
+			$tagRepo = new TagRepository();
+			$tagsOrderd = $tagRepo->selectTag($searchStr);
+			$tagByTid = $tagRepo->getPid($tagsOrderd->tid);
+		
+			$testarray = array();
+			
+			for($x =0; $x < count($tagByTid); $x++){
+				$fotoTags = $pictureRepo->getPicturesByIds($gid,$tagByTid[$x]->pid);
+				array_push($testarray, $fotoTags);
+			}
+			$view->pictures =$testarray;
+		}
+		}else{
+	
+		$test = array();
+		$justin = $pictureRepo->getPicturesByGid($gid);
+		array_push($test,$justin);
+		
+		$view->pictures = $test;
+		}
+
 		$view->display();
 		}
 
@@ -94,9 +122,7 @@ class PictureController
 				// $newFileName = $path_parts['filename'].$randomName.'.'.$path_parts['extension'];
 
 				$filesize = round($file_size / 1024 / 1024, 1);
-				if ($filesize > 1)
 					{
-					array_push($errorsRegister, 'File zu gross');
 					$this->displayUploadeErorrs($errorsRegister);
 					$pfad = $GLOBALS['appurl'] . "/picture/pictures?gid=" . $gid;
 					header('Location: ' . $pfad);

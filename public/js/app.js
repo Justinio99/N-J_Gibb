@@ -35,6 +35,7 @@ $(document).ready(function () {
 
     $('#add-picture').click(function () {
         $('.uploade-picture').toggleClass('hidden');
+        $('.sort-picture').toggleClass('hidden');
     });
 
 });
