@@ -1,5 +1,14 @@
 <?php
 
+if(isset($_SESSION['registerErrors'])){
+  foreach($_SESSION['registerErrors'] as $value){
+    echo "<div class='error-style'>".$value."</div>";
+  }
+  
+
+  }
+  unset($_SESSION['registerErrors']);
+  ?>
 <a style="margin-bottom:10px;" id="add-picture" class="btn-floating btn-large waves-effect waves-light gray"><i class="material-icons">add</i></a>
 <form class="uploade-picture hidden" action='/N-J_Gibb/public/picture/upload?gid=<?php echo $_GET['gid']; ?>' method="post" enctype="multipart/form-data">
 <input  type="file" name="upload" id="fileToUpload">
@@ -11,7 +20,10 @@
 <input class="waves-effect waves-light btn-small" type="submit" value="Upload Image" name="submit">
 </form>
 
-
+<form class="sort-picture" action='/N-J_Gibb/public/picture/pictures?gid=<?php echo $_GET['gid']; ?>' method="post" enctype="multipart/form-data">
+<input type="text" placeholder="Suche nach tag" name="searchTag"/>
+<input class="waves-effect waves-light btn-small" type="submit" value="Search" name="submit">
+</form>
 
 <div class="picture-container" style='display: flex;flex-wrap: wrap;';>
 <?php 
@@ -19,26 +31,24 @@ if(isset($_SESSION['uid'])){
 $thumnUrl ="/N-J_Gibb/thumbs/";
 $pictureUrl ="/N-J_Gibb/Pictures/";
 for($i=0; $i< count($pictures);$i++){
-    
+  for($j=0; $j< count($pictures[$i]);$j++){
    echo '<div class="card-pic with-photo">
    <header class="card-header">
-   <a href="'.$pictureUrl.$pictures[$i]->picture.'" data-lightbox="roadtrip">
-     <img src="'.$thumnUrl.$pictures[$i]->picture.'" alt=""></a>
+   <a href="'.$pictureUrl.$pictures[$i][$j]->picture.'" data-lightbox="roadtrip">
+     <img src="'.$thumnUrl.$pictures[$i][$j]->picture.'" alt=""></a>
    </header>
    <section class="card-body">
-<<<<<<< HEAD
-     <span>'.$pictures[$i]->title.'</span>
-     <p id="paragraph" style="color:black;">'.$pictures[$i]->beschreibung.'</p>
-     <a href="/N-J_Gibb/public/picture/deletePicture?pid='.$pictures[$i]->pid."&gid=".$pictures[$i]->gid.'" onclick=`return confirm("Are you sure you want to delete this Gallerie?");`>
+     <span>'.$pictures[$i][$j]->title.'</span>
+     <p style="color:black;">'.$pictures[$i][$j]->beschreibung.'</p>
+     <a href="/N-J_Gibb/public/picture/deletePicture?pid='.$pictures[$i][$j]->pid."&gid=".$pictures[$i][$j]->gid.'" onclick=`return confirm("Are you sure you want to delete this Gallerie?");`>
     <i class="material-icons dp48 ">delete</i>
     </a>
-    <a href="/N-J_Gibb/public/picture/editPicture?pid='.$pictures[$i]->pid."&gid=".$pictures[$i]->gid.'" onclick=`return confirm("Are you sure you want to delete this Gallerie?");`>
+    <a href="/N-J_Gibb/public/picture/editPicture?pid='.$pictures[$i][$j]->pid."&gid=".$pictures[$i][$j]->gid.'" onclick=`return confirm("Are you sure you want to delete this Gallerie?");`>
     <i class="material-icons dp48 ">edit</i>
     </a>
-=======
->>>>>>> dev_tags
    </section>
  </div>';
+  }
 }
 }else{
    echo  "Keine Berechtigung!";

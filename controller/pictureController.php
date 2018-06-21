@@ -1,18 +1,14 @@
 <?php
 require_once '../repository/UserRepository.php';
-
+require_once '../repository/TagRepository.php';
 require_once '../repository/PictureRepository.php';
 
 class PictureController
 
 	{
-<<<<<<< HEAD
 	 
 
-	function pictures()
-=======
 	public function pictures()
->>>>>>> dev_tags
 		{
 		error_reporting($gid = $_GET['gid']);
 		$searchStr = $_POST['searchTag'];
@@ -48,7 +44,6 @@ class PictureController
 		}
 
 
-	
 
 	public function displayUploadeErorrs($errorsPicture)
 		{
@@ -63,7 +58,7 @@ class PictureController
         $view->heading = 'Edit Pictures';
         $view->gid = $_GET['gid'];
 		$pictureRepo = new PictureRepository();
-		$view->picture = $pictureRepo->getPictureByPid($pid);
+		$view->picture = $pictureRepo->halloVelo($gid,$pid);
 		$view->display();
     }
     public function updatePicture(){
@@ -95,6 +90,7 @@ class PictureController
 	public function upload()
 		{
 		$pictureRepo = new PictureRepository();
+		$tagRepo = new TagRepository();
 		$gid = $_GET['gid'];
 		$uid = $_SESSION['uid'];
 		$inputs = htmlspecialchars($_POST['tags']);
@@ -111,7 +107,7 @@ class PictureController
 				$file_name_tmp = $_FILES['upload']['tmp_name'];
 				$file_size = $_FILES['upload']['size'];
 				$target_dir = "../Pictures/";
-
+				$tagString = $_POST['tags'];
 				// $randomName = bin2hex(random_bytes(10));
 				// New
 
@@ -122,13 +118,30 @@ class PictureController
 				// $newFileName = $path_parts['filename'].$randomName.'.'.$path_parts['extension'];
 
 				$filesize = round($file_size / 1024 / 1024, 1);
+				if ($filesize > 4)
 					{
+					array_push($errorsRegister, 'File ist zu gross!!!!');
 					$this->displayUploadeErorrs($errorsRegister);
 					$pfad = $GLOBALS['appurl'] . "/picture/pictures?gid=" . $gid;
 					header('Location: ' . $pfad);
 					}
 				  else
 					{
+						$tagsArray = explode(',', $tagString);
+						$tagIds = array();
+						foreach($tagsArray as $tag){
+							$tag = str_replace(' ','', $tag);
+							var_dump($tag);
+							if($tagRepo->selectTag($tag) == null){
+								$tagRepo->insertTags($tag);
+								$id = $tagRepo->selectTag($tag);
+							}else{
+								$id = $tagRepo->selectTag($tag);
+							}
+						
+							array_push($tagIds, $id);
+						}
+
 					if (move_uploaded_file($file_name_tmp, $target_dir . $newFileName))
 						{
 						$img = imagecreatefromjpeg("../Pictures/" . $newFileName);
@@ -158,7 +171,15 @@ class PictureController
 						imagejpeg($thumbnail, "../thumbs/" . $newFileName);
 						imagedestroy($thumbnail);
 						imagedestroy($img);
+						
 						$pictureRepo->uploadPicture($pid, $gid, $newFileName, $title, $beschreibung);
+							foreach($tagIds as $tagid){
+								var_dump($tagid);
+								$tagRepo->addTagsToPicture($pid, $tagid->tid);
+							}
+							
+						
+
 						$pfad = $GLOBALS['appurl'] . "/picture/pictures?gid=" . $gid;
 						header('Location: ' . $pfad);
 						}

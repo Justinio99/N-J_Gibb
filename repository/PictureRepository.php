@@ -28,21 +28,49 @@ require_once '../lib/ConnectionHandler.php';
         $result->close();
         return $rows;
     }
-
+    public function halloVelo($gid,$pid){
+      $query = "SELECT * FROM picture WHERE gid = ? AND pid =?";
+      $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('ii',$gid,$pid);
+        $statement->execute();
+        $result = $statement->get_result();
+        $rows = array();
+        while($row =$result->fetch_object()){
+          $rows[] = $row;
+        }
+        if(!$result) throw new Exception($statement->error);
+        $row = $result->fetch_object();
+        $result->close();
+        return $rows;
+    }
     public function getFirstPicture($gid){
       $query = "SELECT * FROM picture WHERE gid = ?";
       $statement = ConnectionHandler::getConnection()->prepare($query);
       $statement->bind_param('i',$gid);
       $statement->execute();
       $result = $statement->get_result();
-      $rows = array();
-      while($row =$result->fetch_object()){
-        $rows[] = $row;
-      }
-      if(!$result) throw new Exception($statement->error);
-      $row = $result->fetch_object();
-      $result->close();
-      return $rows;
+        $rows = array();
+        while($row = $result->fetch_object()){
+            $rows[]= $row;
+        }
+        if(!$result) throw Exception($statement->error);
+        $result->close();
+        return $rows;
+    }
+
+    public function getAllPictures($pid){
+      $query = "SELECT * FROM picture WHERE pid = ?";
+      $statement = ConnectionHandler::getConnection()->prepare($query);
+      $statement->bind_param('i',$pid);
+      $statement->execute();
+      $result = $statement->get_result();
+        $rows = array();
+        while($row = $result->fetch_object()){
+            $rows[]= $row;
+        }
+        if(!$result) throw Exception($statement->error);
+        $result->close();
+        return $rows;
     }
     //This function expectes an array as Parameter!
     public function addTags($pid,$tagArray){
@@ -113,8 +141,21 @@ require_once '../lib/ConnectionHandler.php';
       $statement->execute();
     }
     
-=======
->>>>>>> dev_tags
+    public function getPicturesByIds($gid,$pid){
+      $query = "SELECT * FROM picture WHERE pid = ? AND gid = ?";
+      $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('ii',$pid,$gid);
+        $statement->execute();
+        $result = $statement->get_result();
+        $rows = array();
+        while($row =$result->fetch_object()){
+          $rows[] = $row;
+        }
+        if(!$result) throw new Exception($statement->error);
+        $row = $result->fetch_object();
+        $result->close();
+        return $rows;
+    }
   }
 ?>
 
