@@ -25,7 +25,7 @@ CREATE TABLE gallerie(gid int PRIMARY KEY AUTO_INCREMENT,
                      picture varchar(70),
                      title varchar(50),
                      beschreibung varchar(200),
-                     FOREIGN KEY (uid) REFERENCES benutzer(uid) on delete cascade,
+                 
                      FOREIGN KEY (gid) REFERENCES gallerie(gid) on delete cascade
                      );
 --tag

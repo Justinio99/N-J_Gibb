@@ -76,4 +76,19 @@ class TagRepository extends Repository
         $statement->bind_param('i',$tid);
         $statement->execute();
     }
+
+    public function getPid($tid){
+        $query = "SELECT pid FROM picture_tag WHERE tid = ?";
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('i',$tid);
+        $statement->execute();
+        $result = $statement->get_result();
+        $rows = array();
+        while($row = $result->fetch_object()){
+            $rows[]= $row;
+        }
+        if(!$result) throw Exception($statement->error);
+        $result->close();
+        return $rows;
+    }
 }

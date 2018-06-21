@@ -6,29 +6,51 @@ require_once '../repository/PictureRepository.php';
 class PictureController
 
 	{
-	public
-
-	function pictures()
+	public function pictures()
 		{
-		$gid = $_GET['gid'];
+		error_reporting($gid = $_GET['gid']);
+		$searchStr = $_POST['searchTag'];
 		$view = new View('pictures');
 		$view->title = 'User Pictures';
 		$view->heading = 'User Pictures';
 		$pictureRepo = new PictureRepository();
-		$view->pictures = $pictureRepo->getPicturesByGid($gid);
+		if($_POST['searchTag'] != ''){
+		if(isset($_POST['searchTag'])){
+
+			$tagRepo = new TagRepository();
+			$tagsOrderd = $tagRepo->selectTag($searchStr);
+			$tagByTid = $tagRepo->getPid($tagsOrderd->tid);
+		
+			$testarray = array();
+			
+			for($x =0; $x < count($tagByTid); $x++){
+				$fotoTags = $pictureRepo->getPicturesByIds($gid,$tagByTid[$x]->pid);
+				array_push($testarray, $fotoTags);
+			}
+			$view->pictures =$testarray;
+		}
+		}else{
+	
+		$test = array();
+		$justin = $pictureRepo->getPicturesByGid($gid);
+		array_push($test,$justin);
+		
+		$view->pictures = $test;
+		}
+
 		$view->display();
 		}
 
-	public
+	
+		
+		
 
-	function displayUploadeErorrs($errorsPicture)
+	public function displayUploadeErorrs($errorsPicture)
 		{
 		$_SESSION['registerErrors'] = $errorsPicture;
 		}
 
-	public
-
-	function upload()
+	public function upload()
 		{
 		$pictureRepo = new PictureRepository();
 		$tagRepo = new TagRepository();
@@ -121,17 +143,17 @@ class PictureController
 							
 						
 
-						// $pfad = $GLOBALS['appurl'] . "/picture/pictures?gid=" . $gid;
-						// header('Location: ' . $pfad);
+						$pfad = $GLOBALS['appurl'] . "/picture/pictures?gid=" . $gid;
+						header('Location: ' . $pfad);
 						}
 					}
 				}
 			  else
 				{
-				// array_push($errorsRegister, 'Kein Bild ausgewählt');
-				// $this->displayUploadeErorrs($errorsRegister);
-				// $pfad = $GLOBALS['appurl'] . "/picture/pictures?gid=" . $gid;
-				// header('Location: ' . $pfad);
+				array_push($errorsRegister, 'Kein Bild ausgewählt');
+				$this->displayUploadeErorrs($errorsRegister);
+				$pfad = $GLOBALS['appurl'] . "/picture/pictures?gid=" . $gid;
+				header('Location: ' . $pfad);
 				}
 			}
 		}

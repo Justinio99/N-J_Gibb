@@ -35,14 +35,13 @@ require_once '../lib/ConnectionHandler.php';
       $statement->bind_param('i',$gid);
       $statement->execute();
       $result = $statement->get_result();
-      $rows = array();
-      while($row =$result->fetch_object()){
-        $rows[] = $row;
-      }
-      if(!$result) throw new Exception($statement->error);
-      $row = $result->fetch_object();
-      $result->close();
-      return $rows;
+        $rows = array();
+        while($row = $result->fetch_object()){
+            $rows[]= $row;
+        }
+        if(!$result) throw Exception($statement->error);
+        $result->close();
+        return $rows;
     }
     //This function expectes an array as Parameter!
     public function addTags($pid,$tagArray){
@@ -84,6 +83,22 @@ require_once '../lib/ConnectionHandler.php';
         $row = $result->fetch_object();
         $result->close();
         return $row;
+    }
+
+    public function getPicturesByIds($gid,$pid){
+      $query = "SELECT * FROM picture WHERE pid = ? AND gid = ?";
+      $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('ii',$pid,$gid);
+        $statement->execute();
+        $result = $statement->get_result();
+        $rows = array();
+        while($row =$result->fetch_object()){
+          $rows[] = $row;
+        }
+        if(!$result) throw new Exception($statement->error);
+        $row = $result->fetch_object();
+        $result->close();
+        return $rows;
     }
   }
 ?>
